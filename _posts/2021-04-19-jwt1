@@ -1,0 +1,209 @@
+---
+layout: post
+title:  "Integrating razorpay into your webapp"
+date:   2019-03-23 21:03:36 +0530
+categories: Javascript NodeJS
+---
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+
+```javascript
+const Razorpay = require('razorpay');
+
+let rzp = Razorpay({
+	key_id: 'KEY_ID',
+	secret: 'name'
+});
+
+// capture request
+rzp.capture(payment_id, cost)
+	.then(function (data) {
+		return 2;
+	})
+```
+
+# jwt 소스코드를 뜯어보자
+
+jwt에 대해서 조금 궁금해져서 
+
+사용방법을 조금 더 고민하다가 파싱함수를 뜯어보기로 했다. 
+
+jwt는 <strong>DefaultJws</strong>라는 클래스에 의해 만들어지고 쓰여진다. 
+
+상단영역을 보게되면 멤버 변수로 header, body, signature 로 구성되어있다. 
+body가 payload 영역으로 추측된다.
+
+signature 영역은 string, 
+body는 제네릭,
+jwsheader는 또 뭐가있긴한데, keyId, algorithm이 있음
+
+```java
+public class DefaultJws<B> implements Jws<B> {
+
+    private final JwsHeader header;
+    private final B body;
+    private final String signature;
+
+    public DefaultJws(JwsHeader header, B body, String signature) {
+        this.header = header;
+        this.body = body;
+        this.signature = signature;
+    }
+
+    @Override
+    public JwsHeader getHeader() {
+        return this.header;
+    }
+
+    @Override
+    public B getBody() {
+        return this.body;
+    }
+
+    @Override
+    public String getSignature() {
+        return this.signature;
+    }
+
+    @Override
+	public String toString() {
+        return "header=" + header + ",body=" + body + ",signature=" + signature;
+    }
+}
+```
+
+
+
+# jwt 파싱 (step1, 함수선언)
+
+```java
+public Jwt parse(String jwt) throws ExpiredJwtException, MalformedJwtException, SignatureException {
+```
+
+jwt 파싱함수는 토큰을 입력값으로 받고, 
+토큰만료, 토큰형식, 암호처리 관련 예외처리를 기본적으로 체크한다. 
+
+# jwt 파싱(step2, header, paylod)
+파싱함수를 쭉 따라가다보면 
+
+jwt 토큰을 '.' 으로 파싱한다.
+
+split을 쓰면 간단할거 같긴한데, 아래처럼 처리한다. 이게성능이 좀더 나은가봄
+파싱하는 부분은 header와 playload뿐 
+
+```java
+for (char c : jwt.toCharArray()) {
+
+    if (c == SEPARATOR_CHAR) {
+
+        CharSequence tokenSeq = Strings.clean(sb);
+        String token = tokenSeq!=null?tokenSeq.toString():null;
+
+        if (delimiterCount == 0) {
+            base64UrlEncodedHeader = token;
+        } else if (delimiterCount == 1) {
+            base64UrlEncodedPayload = token;
+        }
+
+        delimiterCount++;
+        sb.setLength(0);
+    } else {
+        sb.append(c);
+    }
+}
+```
+파싱이 끝나고 delimeterCount가 2개가 아니거나 playload가 null 이면 예외처리한다. 
+
+# jwt파싱(step3, header)
+
+header 파싱은 별게없다 
+base64로 디코딩한후 Header 객체에 담아준다. 
+이건 나중에 리턴할 값의 header가 된다. 
+
+```java
+// =============== Header =================
+Header header = null;
+
+CompressionCodec compressionCodec = null;
+
+if (base64UrlEncodedHeader != null) {
+    String origValue = TextCodec.BASE64URL.decodeToString(base64UrlEncodedHeader);
+    Map<String, Object> m = readValue(origValue);
+
+    if (base64UrlEncodedDigest != null) {
+        header = new DefaultJwsHeader(m);
+    } else {
+        header = new DefaultHeader(m);
+    }
+
+    compressionCodec = compressionCodecResolver.resolveCompressionCodec(header);
+}
+```
+
+대신 compressionCode 변수에 header기반으로 값이 담겼다. 
+header에서 어떤 압축정보를 가지고 있는듯하다 코드값은 gzip과 deplate이다. 
+
+# jwt파싱(step4, payload)
+
+payload를 디코딩할때 header디코딩시 만들어뒀던 compressionCodec를 사용한다. 
+
+header 값이 없으면 결국 payload도 디코딩불가 
+
+그리고 파싱이후에는 byte배열로 저장되며
+
+이는 다시 Claim이라는 객체에 json형태로 값을 저장한다. 
+
+```java
+
+// =============== Body =================
+String payload;
+if (compressionCodec != null) {
+    byte[] decompressed = compressionCodec.decompress(TextCodec.BASE64URL.decode(base64UrlEncodedPayload));
+    payload = new String(decompressed, Strings.UTF_8);
+} else {
+    payload = TextCodec.BASE64URL.decodeToString(base64UrlEncodedPayload);
+}
+
+Claims claims = null;
+
+if (payload.charAt(0) == '{' && payload.charAt(payload.length() - 1) == '}') { //likely to be json, parse it:
+    Map<String, Object> claimsMap = readValue(payload);
+    claims = new DefaultClaims(claimsMap);
+}
+
+```
+
+
+## Claims
+
+에서 가지고 있는 변수 정보는 다음과 같다. 
+
+여기에는 없지만, get의 리턴은 string이고, set은 Claims다. 
+
+builder패턴이 사용되었다. 
+
+```java
+public interface Claims extends Map<String, Object>, ClaimsMutator<Claims> {
+
+    /** JWT {@code Issuer} claims parameter name: <code>"iss"</code> */
+    public static final String ISSUER = "iss";
+
+    /** JWT {@code Subject} claims parameter name: <code>"sub"</code> */
+    public static final String SUBJECT = "sub";
+
+    /** JWT {@code Audience} claims parameter name: <code>"aud"</code> */
+    public static final String AUDIENCE = "aud";
+
+    /** JWT {@code Expiration} claims parameter name: <code>"exp"</code> */
+    public static final String EXPIRATION = "exp";
+
+    /** JWT {@code Not Before} claims parameter name: <code>"nbf"</code> */
+    public static final String NOT_BEFORE = "nbf";
+
+    /** JWT {@code Issued At} claims parameter name: <code>"iat"</code> */
+    public static final String ISSUED_AT = "iat";
+
+    /** JWT {@code JWT ID} claims parameter name: <code>"jti"</code> */
+    public static final String ID = "jti";
+```
+
+signature 부분은 좀 길어서 다음글에서 정리

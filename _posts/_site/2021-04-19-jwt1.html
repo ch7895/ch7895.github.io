@@ -1,0 +1,193 @@
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">Razorpay</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">razorpay</span><span class="dl">'</span><span class="p">);</span>
+
+<span class="kd">let</span> <span class="nx">rzp</span> <span class="o">=</span> <span class="nx">Razorpay</span><span class="p">({</span>
+	<span class="na">key_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">KEY_ID</span><span class="dl">'</span><span class="p">,</span>
+	<span class="na">secret</span><span class="p">:</span> <span class="dl">'</span><span class="s1">name</span><span class="dl">'</span>
+<span class="p">});</span>
+
+<span class="c1">// capture request</span>
+<span class="nx">rzp</span><span class="p">.</span><span class="nx">capture</span><span class="p">(</span><span class="nx">payment_id</span><span class="p">,</span> <span class="nx">cost</span><span class="p">)</span>
+	<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
+	<span class="p">})</span>
+</code></pre></div></div>
+
+<h1 id="jwt-소스코드를-뜯어보자">jwt 소스코드를 뜯어보자</h1>
+
+<p>jwt에 대해서 조금 궁금해져서</p>
+
+<p>사용방법을 조금 더 고민하다가 파싱함수를 뜯어보기로 했다.</p>
+
+<p>jwt는 <strong>DefaultJws</strong>라는 클래스에 의해 만들어지고 쓰여진다.</p>
+
+<p>상단영역을 보게되면 멤버 변수로 header, body, signature 로 구성되어있다. 
+body가 payload 영역으로 추측된다.</p>
+
+<p>signature 영역은 string, 
+body는 제네릭,
+jwsheader는 또 뭐가있긴한데, keyId, algorithm이 있음</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DefaultJws</span><span class="o">&lt;</span><span class="no">B</span><span class="o">&gt;</span> <span class="kd">implements</span> <span class="nc">Jws</span><span class="o">&lt;</span><span class="no">B</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">JwsHeader</span> <span class="n">header</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="no">B</span> <span class="n">body</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">signature</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">DefaultJws</span><span class="o">(</span><span class="nc">JwsHeader</span> <span class="n">header</span><span class="o">,</span> <span class="no">B</span> <span class="n">body</span><span class="o">,</span> <span class="nc">String</span> <span class="n">signature</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">header</span> <span class="o">=</span> <span class="n">header</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">body</span> <span class="o">=</span> <span class="n">body</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">signature</span> <span class="o">=</span> <span class="n">signature</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">JwsHeader</span> <span class="nf">getHeader</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">header</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="no">B</span> <span class="nf">getBody</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">body</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getSignature</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="o">.</span><span class="na">signature</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+	<span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="s">"header="</span> <span class="o">+</span> <span class="n">header</span> <span class="o">+</span> <span class="s">",body="</span> <span class="o">+</span> <span class="n">body</span> <span class="o">+</span> <span class="s">",signature="</span> <span class="o">+</span> <span class="n">signature</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h1 id="jwt-파싱-step1-함수선언">jwt 파싱 (step1, 함수선언)</h1>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">Jwt</span> <span class="nf">parse</span><span class="o">(</span><span class="nc">String</span> <span class="n">jwt</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ExpiredJwtException</span><span class="o">,</span> <span class="nc">MalformedJwtException</span><span class="o">,</span> <span class="nc">SignatureException</span> <span class="o">{</span>
+</code></pre></div></div>
+
+<p>jwt 파싱함수는 토큰을 입력값으로 받고, 
+토큰만료, 토큰형식, 암호처리 관련 예외처리를 기본적으로 체크한다.</p>
+
+<h1 id="jwt-파싱step2-header-paylod">jwt 파싱(step2, header, paylod)</h1>
+<p>파싱함수를 쭉 따라가다보면</p>
+
+<p>jwt 토큰을 ‘.’ 으로 파싱한다.</p>
+
+<p>split을 쓰면 간단할거 같긴한데, 아래처럼 처리한다. 이게성능이 좀더 나은가봄
+파싱하는 부분은 header와 playload뿐</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="o">(</span><span class="kt">char</span> <span class="n">c</span> <span class="o">:</span> <span class="n">jwt</span><span class="o">.</span><span class="na">toCharArray</span><span class="o">())</span> <span class="o">{</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">c</span> <span class="o">==</span> <span class="no">SEPARATOR_CHAR</span><span class="o">)</span> <span class="o">{</span>
+
+        <span class="nc">CharSequence</span> <span class="n">tokenSeq</span> <span class="o">=</span> <span class="nc">Strings</span><span class="o">.</span><span class="na">clean</span><span class="o">(</span><span class="n">sb</span><span class="o">);</span>
+        <span class="nc">String</span> <span class="n">token</span> <span class="o">=</span> <span class="n">tokenSeq</span><span class="o">!=</span><span class="kc">null</span><span class="o">?</span><span class="n">tokenSeq</span><span class="o">.</span><span class="na">toString</span><span class="o">():</span><span class="kc">null</span><span class="o">;</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">delimiterCount</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">base64UrlEncodedHeader</span> <span class="o">=</span> <span class="n">token</span><span class="o">;</span>
+        <span class="o">}</span> <span class="k">else</span> <span class="k">if</span> <span class="o">(</span><span class="n">delimiterCount</span> <span class="o">==</span> <span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">base64UrlEncodedPayload</span> <span class="o">=</span> <span class="n">token</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="n">delimiterCount</span><span class="o">++;</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">setLength</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="n">sb</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">c</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+<p>파싱이 끝나고 delimeterCount가 2개가 아니거나 playload가 null 이면 예외처리한다.</p>
+
+<h1 id="jwt파싱step3-header">jwt파싱(step3, header)</h1>
+
+<p>header 파싱은 별게없다 
+base64로 디코딩한후 Header 객체에 담아준다. 
+이건 나중에 리턴할 값의 header가 된다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// =============== Header =================</span>
+<span class="nc">Header</span> <span class="n">header</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+<span class="nc">CompressionCodec</span> <span class="n">compressionCodec</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+<span class="k">if</span> <span class="o">(</span><span class="n">base64UrlEncodedHeader</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">origValue</span> <span class="o">=</span> <span class="nc">TextCodec</span><span class="o">.</span><span class="na">BASE64URL</span><span class="o">.</span><span class="na">decodeToString</span><span class="o">(</span><span class="n">base64UrlEncodedHeader</span><span class="o">);</span>
+    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">m</span> <span class="o">=</span> <span class="n">readValue</span><span class="o">(</span><span class="n">origValue</span><span class="o">);</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">base64UrlEncodedDigest</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">header</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DefaultJwsHeader</span><span class="o">(</span><span class="n">m</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="n">header</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DefaultHeader</span><span class="o">(</span><span class="n">m</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="n">compressionCodec</span> <span class="o">=</span> <span class="n">compressionCodecResolver</span><span class="o">.</span><span class="na">resolveCompressionCodec</span><span class="o">(</span><span class="n">header</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>대신 compressionCode 변수에 header기반으로 값이 담겼다. 
+header에서 어떤 압축정보를 가지고 있는듯하다 코드값은 gzip과 deplate이다.</p>
+
+<h1 id="jwt파싱step4-payload">jwt파싱(step4, payload)</h1>
+
+<p>payload를 디코딩할때 header디코딩시 만들어뒀던 compressionCodec를 사용한다.</p>
+
+<p>header 값이 없으면 결국 payload도 디코딩불가</p>
+
+<p>그리고 파싱이후에는 byte배열로 저장되며</p>
+
+<p>이는 다시 Claim이라는 객체에 json형태로 값을 저장한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="c1">// =============== Body =================</span>
+<span class="nc">String</span> <span class="n">payload</span><span class="o">;</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">compressionCodec</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">byte</span><span class="o">[]</span> <span class="n">decompressed</span> <span class="o">=</span> <span class="n">compressionCodec</span><span class="o">.</span><span class="na">decompress</span><span class="o">(</span><span class="nc">TextCodec</span><span class="o">.</span><span class="na">BASE64URL</span><span class="o">.</span><span class="na">decode</span><span class="o">(</span><span class="n">base64UrlEncodedPayload</span><span class="o">));</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="n">decompressed</span><span class="o">,</span> <span class="nc">Strings</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">);</span>
+<span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="nc">TextCodec</span><span class="o">.</span><span class="na">BASE64URL</span><span class="o">.</span><span class="na">decodeToString</span><span class="o">(</span><span class="n">base64UrlEncodedPayload</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="nc">Claims</span> <span class="n">claims</span> <span class="o">=</span> <span class="kc">null</span><span class="o">;</span>
+
+<span class="k">if</span> <span class="o">(</span><span class="n">payload</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="mi">0</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'{'</span> <span class="o">&amp;&amp;</span> <span class="n">payload</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">payload</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">==</span> <span class="sc">'}'</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//likely to be json, parse it:</span>
+    <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;</span> <span class="n">claimsMap</span> <span class="o">=</span> <span class="n">readValue</span><span class="o">(</span><span class="n">payload</span><span class="o">);</span>
+    <span class="n">claims</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">DefaultClaims</span><span class="o">(</span><span class="n">claimsMap</span><span class="o">);</span>
+<span class="o">}</span>
+
+</code></pre></div></div>
+
+<h2 id="claims">Claims</h2>
+
+<p>에서 가지고 있는 변수 정보는 다음과 같다.</p>
+
+<p>여기에는 없지만, get의 리턴은 string이고, set은 Claims다.</p>
+
+<p>builder패턴이 사용되었다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">interface</span> <span class="nc">Claims</span> <span class="kd">extends</span> <span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">Object</span><span class="o">&gt;,</span> <span class="nc">ClaimsMutator</span><span class="o">&lt;</span><span class="nc">Claims</span><span class="o">&gt;</span> <span class="o">{</span>
+
+    <span class="cm">/** JWT {@code Issuer} claims parameter name: &lt;code&gt;"iss"&lt;/code&gt; */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">ISSUER</span> <span class="o">=</span> <span class="s">"iss"</span><span class="o">;</span>
+
+    <span class="cm">/** JWT {@code Subject} claims parameter name: &lt;code&gt;"sub"&lt;/code&gt; */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">SUBJECT</span> <span class="o">=</span> <span class="s">"sub"</span><span class="o">;</span>
+
+    <span class="cm">/** JWT {@code Audience} claims parameter name: &lt;code&gt;"aud"&lt;/code&gt; */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">AUDIENCE</span> <span class="o">=</span> <span class="s">"aud"</span><span class="o">;</span>
+
+    <span class="cm">/** JWT {@code Expiration} claims parameter name: &lt;code&gt;"exp"&lt;/code&gt; */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">EXPIRATION</span> <span class="o">=</span> <span class="s">"exp"</span><span class="o">;</span>
+
+    <span class="cm">/** JWT {@code Not Before} claims parameter name: &lt;code&gt;"nbf"&lt;/code&gt; */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">NOT_BEFORE</span> <span class="o">=</span> <span class="s">"nbf"</span><span class="o">;</span>
+
+    <span class="cm">/** JWT {@code Issued At} claims parameter name: &lt;code&gt;"iat"&lt;/code&gt; */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">ISSUED_AT</span> <span class="o">=</span> <span class="s">"iat"</span><span class="o">;</span>
+
+    <span class="cm">/** JWT {@code JWT ID} claims parameter name: &lt;code&gt;"jti"&lt;/code&gt; */</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">ID</span> <span class="o">=</span> <span class="s">"jti"</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p>signature 부분은 좀 길어서 다음글에서 정리</p>

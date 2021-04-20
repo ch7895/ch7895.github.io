@@ -1,27 +1,17 @@
 ---
 layout: post
-title:  "Integrating razorpay into your webapp"
-date:   2019-03-23 21:03:36 +0530
-categories: Javascript NodeJS
+title:  "jwt파싱1"
+date:   2021-04-19 01:01:31 +0530
+categories: java jwt
 ---
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+jwt에 대해서 조금 궁금해져서 사용방법을 조금 더 고민하다가 파싱함수를 뜯어보기로 했다. 
+jwt는 <strong>DefaultJws</strong>라는 클래스에 의해 만들어지고 쓰여진다. 
+상단영역을 보게되면 멤버 변수로 header, body, signature 로 구성되어있다. 
+body가 payload 영역으로 추측된다.
 
-```javascript
-const Razorpay = require('razorpay');
 
-let rzp = Razorpay({
-	key_id: 'KEY_ID',
-	secret: 'name'
-});
 
-// capture request
-rzp.capture(payment_id, cost)
-	.then(function (data) {
-		return 2;
-	})
-```
-
-# jwt 소스코드를 뜯어보자
+## jwt 소스코드를 뜯어보자
 
 jwt에 대해서 조금 궁금해져서 
 
@@ -207,3 +197,20 @@ public interface Claims extends Map<String, Object>, ClaimsMutator<Claims> {
 ```
 
 signature 부분은 좀 길어서 다음글에서 정리
+
+
+
+```javascript
+const Razorpay = require('razorpay');
+
+let rzp = Razorpay({
+	key_id: 'KEY_ID',
+	secret: 'name'
+});
+
+// capture request
+rzp.capture(payment_id, cost)
+	.then(function (data) {
+		return 2;
+	})
+```

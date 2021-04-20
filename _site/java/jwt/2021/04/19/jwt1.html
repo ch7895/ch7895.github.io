@@ -74,17 +74,6 @@ jwt는 <strong>DefaultJws</strong>라는 클래스에 의해 만들어지고 쓰
 상단영역을 보게되면 멤버 변수로 header, body, signature 로 구성되어있다. 
 body가 payload 영역으로 추측된다.</p>
 
-<h2 id="jwt-소스코드를-뜯어보자">jwt 소스코드를 뜯어보자</h2>
-
-<p>jwt에 대해서 조금 궁금해져서</p>
-
-<p>사용방법을 조금 더 고민하다가 파싱함수를 뜯어보기로 했다.</p>
-
-<p>jwt는 <strong>DefaultJws</strong>라는 클래스에 의해 만들어지고 쓰여진다.</p>
-
-<p>상단영역을 보게되면 멤버 변수로 header, body, signature 로 구성되어있다. 
-body가 payload 영역으로 추측된다.</p>
-
 <p>signature 영역은 string, 
 body는 제네릭,
 jwsheader는 또 뭐가있긴한데, keyId, algorithm이 있음</p>

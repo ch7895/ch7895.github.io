@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "jwt파싱1"
-date:   2021-04-19 01:01:31 +0530
+title:  "jwt파싱2 (signature)"
+date:   2021-04-20 20:35:00 +0530
 categories: java jwt
 ---
 
@@ -102,8 +102,6 @@ key가 없고 keybyte만 존재하는 경우는 hmac인 경우에만 가능하�
 이렇게 alg, key가 설정이 됐으면 이에 대한 유효성검증을 한다.
 
 ```java
-
-
     JwtSignatureValidator validator;
     try {
         validator = createSignatureValidator(algorithm, key);

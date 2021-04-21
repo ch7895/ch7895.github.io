@@ -1,14 +1,14 @@
 [
   
     {
-      "title"    : "jwt파싱1",
-      "title-lower"    : "jwt파싱1",
+      "title"    : "jwt파싱2 (signature)",
+      "title-lower"    : "jwt파싱2 (signature)",
       "sub-titile" : "",
       "sub-titile-lower" : "",
       "categories" : "javajwt",
       "tags"     : "",
-      "url"      : "/java/jwt/2021/04/19/jwt2.html",
-      "date"     : "2021-04-19 04:31:31 +0900",
+      "url"      : "/java/jwt/2021/04/21/jwt2.html",
+      "date"     : "2021-04-21 00:05:00 +0900",
       "content"     : "signature부분은 토큰의 변조 방지를 담당한다.토큰내용이야 base64로 인코딩되어있어 얼마든지 디코딩이 가능하나변조는 불가능해야 한다.jwt파싱 (step1-1, SignatureAlgorithm)우선 header영역의 alg값을 읽어온다. 이값이 null 이면 예외를 뱉는다. SignatureAlorithm 클래스는 enum 타입고 각종 ha..."
     } ,
   

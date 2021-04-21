@@ -6,11 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
-<title>jwt파싱1</title>
+<title>jwt파싱1 (header, payload)</title>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>jwt파싱1 | Your awesome title</title>
+<title>jwt파싱1 (header, payload) | Your awesome title</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="jwt파싱1" />
+<meta property="og:title" content="jwt파싱1 (header, payload)" />
 <meta name="author" content="GitHub User" />
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="jwt에 대해서 조금 궁금해져서 사용방법을 조금 더 고민하다가 파싱함수를 뜯어보기로 했다. jwt는 DefaultJws라는 클래스에 의해 만들어지고 쓰여진다. 상단영역을 보게되면 멤버 변수로 header, body, signature 로 구성되어있다. body가 payload 영역으로 추측된다." />
@@ -19,9 +19,9 @@
 <meta property="og:type" content="article" />
 <meta property="article:published_time" content="2021-04-19T04:31:31+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="jwt파싱1" />
+<meta property="twitter:title" content="jwt파싱1 (header, payload)" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"/java/jwt/2021/04/19/jwt1.html"},"url":"/java/jwt/2021/04/19/jwt1.html","headline":"jwt파싱1","dateModified":"2021-04-19T04:31:31+09:00","datePublished":"2021-04-19T04:31:31+09:00","author":{"@type":"Person","name":"GitHub User"},"description":"jwt에 대해서 조금 궁금해져서 사용방법을 조금 더 고민하다가 파싱함수를 뜯어보기로 했다. jwt는 DefaultJws라는 클래스에 의해 만들어지고 쓰여진다. 상단영역을 보게되면 멤버 변수로 header, body, signature 로 구성되어있다. body가 payload 영역으로 추측된다.","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"/java/jwt/2021/04/19/jwt1.html"},"url":"/java/jwt/2021/04/19/jwt1.html","headline":"jwt파싱1 (header, payload)","dateModified":"2021-04-19T04:31:31+09:00","datePublished":"2021-04-19T04:31:31+09:00","author":{"@type":"Person","name":"GitHub User"},"description":"jwt에 대해서 조금 궁금해져서 사용방법을 조금 더 고민하다가 파싱함수를 뜯어보기로 했다. jwt는 DefaultJws라는 클래스에 의해 만들어지고 쓰여진다. 상단영역을 보게되면 멤버 변수로 header, body, signature 로 구성되어있다. body가 payload 영역으로 추측된다.","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -64,7 +64,7 @@
     <section class="content">
       <div class="post-container">
   <a class="post-link" href="/java/jwt/2021/04/19/jwt1.html">
-    <h2 class="post-title">jwt파싱1</h2>
+    <h2 class="post-title">jwt파싱1 (header, payload)</h2>
   </a>
   <div class="post-meta">
     <div class="post-date"><i class="icon-calendar"></i>Apr 19, 2021</div><ul class="post-categories"><li>java</li><li>jwt</li></ul></div>
@@ -240,20 +240,6 @@ header에서 어떤 압축정보를 가지고 있는듯하다 코드값은 gzip�
 </code></pre></div></div>
 
 <p>signature 부분은 좀 길어서 다음글에서 정리</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">Razorpay</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">razorpay</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">rzp</span> <span class="o">=</span> <span class="nx">Razorpay</span><span class="p">({</span>
-	<span class="na">key_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">KEY_ID</span><span class="dl">'</span><span class="p">,</span>
-	<span class="na">secret</span><span class="p">:</span> <span class="dl">'</span><span class="s1">name</span><span class="dl">'</span>
-<span class="p">});</span>
-
-<span class="c1">// capture request</span>
-<span class="nx">rzp</span><span class="p">.</span><span class="nx">capture</span><span class="p">(</span><span class="nx">payment_id</span><span class="p">,</span> <span class="nx">cost</span><span class="p">)</span>
-	<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
-	<span class="p">})</span>
-</code></pre></div></div>
 
   </div></div>
 

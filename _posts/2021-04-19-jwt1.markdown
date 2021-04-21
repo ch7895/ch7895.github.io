@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "jwt파싱1"
+title:  "jwt파싱1 (header, payload)"
 date:   2021-04-19 01:01:31 +0530
 categories: java jwt
 ---
@@ -184,20 +184,3 @@ public interface Claims extends Map<String, Object>, ClaimsMutator<Claims> {
 ```
 
 signature 부분은 좀 길어서 다음글에서 정리
-
-
-
-```javascript
-const Razorpay = require('razorpay');
-
-let rzp = Razorpay({
-	key_id: 'KEY_ID',
-	secret: 'name'
-});
-
-// capture request
-rzp.capture(payment_id, cost)
-	.then(function (data) {
-		return 2;
-	})
-```

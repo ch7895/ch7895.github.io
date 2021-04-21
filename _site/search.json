@@ -7,6 +7,18 @@
       "sub-titile-lower" : "",
       "categories" : "javajwt",
       "tags"     : "",
+      "url"      : "/java/jwt/2021/04/19/jwt2.html",
+      "date"     : "2021-04-19 04:31:31 +0900",
+      "content"     : "signature부분은 토큰의 변조 방지를 담당한다.토큰내용이야 base64로 인코딩되어있어 얼마든지 디코딩이 가능하나변조는 불가능해야 한다.jwt파싱 (step1-1, SignatureAlgorithm)우선 header영역의 alg값을 읽어온다. 이값이 null 이면 예외를 뱉는다. SignatureAlorithm 클래스는 enum 타입고 각종 ha..."
+    } ,
+  
+    {
+      "title"    : "jwt파싱1 (header, payload)",
+      "title-lower"    : "jwt파싱1 (header, payload)",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "javajwt",
+      "tags"     : "",
       "url"      : "/java/jwt/2021/04/19/jwt1.html",
       "date"     : "2021-04-19 04:31:31 +0900",
       "content"     : "jwt에 대해서 조금 궁금해져서 사용방법을 조금 더 고민하다가 파싱함수를 뜯어보기로 했다. jwt는 DefaultJws라는 클래스에 의해 만들어지고 쓰여진다. 상단영역을 보게되면 멤버 변수로 header, body, signature 로 구성되어있다. body가 payload 영역으로 추측된다.signature 영역은 string, body는 제네릭,..."

@@ -131,60 +131,88 @@ key가 없고 keybyte만 존재하는 경우는 hmac인 경우에만 가능하�
 토큰 만료시간과 엠바고(?) 체크를 진행한다. 
 
 ```java
-/since 0.3:
-        if (claims != null) {
+    //since 0.3:
+    if (claims != null) {
 
-            SimpleDateFormat sdf;
+        SimpleDateFormat sdf;
 
-            final Date now = this.clock.now();
-            long nowTime = now.getTime();
+        final Date now = this.clock.now();
+        long nowTime = now.getTime();
 
-            //https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-30#section-4.1.4
-            //token MUST NOT be accepted on or after any specified exp time:
-            Date exp = claims.getExpiration();
-            if (exp != null) {
+        //https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-30#section-4.1.4
+        //token MUST NOT be accepted on or after any specified exp time:
+        Date exp = claims.getExpiration();
+        if (exp != null) {
 
-                long maxTime = nowTime - this.allowedClockSkewMillis;
-                Date max = allowSkew ? new Date(maxTime) : now;
-                if (max.after(exp)) {
-                    sdf = new SimpleDateFormat(ISO_8601_FORMAT);
-                    String expVal = sdf.format(exp);
-                    String nowVal = sdf.format(now);
+            long maxTime = nowTime - this.allowedClockSkewMillis;
+            Date max = allowSkew ? new Date(maxTime) : now;
+            if (max.after(exp)) {
+                sdf = new SimpleDateFormat(ISO_8601_FORMAT);
+                String expVal = sdf.format(exp);
+                String nowVal = sdf.format(now);
 
-                    long differenceMillis = maxTime - exp.getTime();
+                long differenceMillis = maxTime - exp.getTime();
 
-                    String msg = "JWT expired at " + expVal + ". Current time: " + nowVal + ", a difference of " +
-                        differenceMillis + " milliseconds.  Allowed clock skew: " +
-                        this.allowedClockSkewMillis + " milliseconds.";
-                    throw new ExpiredJwtException(header, claims, msg);
-                }
+                String msg = "JWT expired at " + expVal + ". Current time: " + nowVal + ", a difference of " +
+                    differenceMillis + " milliseconds.  Allowed clock skew: " +
+                    this.allowedClockSkewMillis + " milliseconds.";
+                throw new ExpiredJwtException(header, claims, msg);
             }
-
-            //https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-30#section-4.1.5
-            //token MUST NOT be accepted before any specified nbf time:
-            Date nbf = claims.getNotBefore();
-            if (nbf != null) {
-
-                long minTime = nowTime + this.allowedClockSkewMillis;
-                Date min = allowSkew ? new Date(minTime) : now;
-                if (min.before(nbf)) {
-                    sdf = new SimpleDateFormat(ISO_8601_FORMAT);
-                    String nbfVal = sdf.format(nbf);
-                    String nowVal = sdf.format(now);
-
-                    long differenceMillis = nbf.getTime() - minTime;
-
-                    String msg = "JWT must not be accepted before " + nbfVal + ". Current time: " + nowVal +
-                        ", a difference of " +
-                        differenceMillis + " milliseconds.  Allowed clock skew: " +
-                        this.allowedClockSkewMillis + " milliseconds.";
-                    throw new PrematureJwtException(header, claims, msg);
-                }
-            }
-
-            validateExpectedClaims(header, claims);
         }
+
+        //https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-30#section-4.1.5
+        //token MUST NOT be accepted before any specified nbf time:
+        Date nbf = claims.getNotBefore();
+        if (nbf != null) {
+
+            long minTime = nowTime + this.allowedClockSkewMillis;
+            Date min = allowSkew ? new Date(minTime) : now;
+            if (min.before(nbf)) {
+                sdf = new SimpleDateFormat(ISO_8601_FORMAT);
+                String nbfVal = sdf.format(nbf);
+                String nowVal = sdf.format(now);
+
+                long differenceMillis = nbf.getTime() - minTime;
+
+                String msg = "JWT must not be accepted before " + nbfVal + ". Current time: " + nowVal +
+                    ", a difference of " +
+                    differenceMillis + " milliseconds.  Allowed clock skew: " +
+                    this.allowedClockSkewMillis + " milliseconds.";
+                throw new PrematureJwtException(header, claims, msg);
+            }
+        }
+
+        validateExpectedClaims(header, claims);
+    }
 ```
+
+# jwt compact
+
+파싱과 받대로 토큰생성시 signature 영역 처리는 다음과 같다.
+
+header + body를 다시 검증된 key를 사용해 한번더 암호화하고 이를 토큰에 추가한다.
+
+```java
+    String jwt = base64UrlEncodedHeader + JwtParser.SEPARATOR_CHAR + base64UrlEncodedBody;
+
+    if (key != null) { //jwt must be signed:
+
+        JwtSigner signer = createSigner(algorithm, key);
+
+        String base64UrlSignature = signer.sign(jwt);
+
+        jwt += JwtParser.SEPARATOR_CHAR + base64UrlSignature;
+    } else {
+        // no signature (plaintext), but must terminate w/ a period, see
+        // https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-25#section-6.1
+        jwt += JwtParser.SEPARATOR_CHAR;
+    }
+
+    return jwt;
+```
+
+
+
 
 ## jwt를 사용한다는것
 <br>

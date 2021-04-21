@@ -184,59 +184,83 @@ SignatureAlorithm 클래스는 enum 타입고 각종 hash 함수들의 이름들
 
 <p>토큰 만료시간과 엠바고(?) 체크를 진행한다.</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">/</span><span class="n">since</span> <span class="mf">0.3</span><span class="o">:</span>
-        <span class="k">if</span> <span class="o">(</span><span class="n">claims</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="c1">//since 0.3:</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">claims</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
 
-            <span class="nc">SimpleDateFormat</span> <span class="n">sdf</span><span class="o">;</span>
+        <span class="nc">SimpleDateFormat</span> <span class="n">sdf</span><span class="o">;</span>
 
-            <span class="kd">final</span> <span class="nc">Date</span> <span class="n">now</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">clock</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
-            <span class="kt">long</span> <span class="n">nowTime</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="na">getTime</span><span class="o">();</span>
+        <span class="kd">final</span> <span class="nc">Date</span> <span class="n">now</span> <span class="o">=</span> <span class="k">this</span><span class="o">.</span><span class="na">clock</span><span class="o">.</span><span class="na">now</span><span class="o">();</span>
+        <span class="kt">long</span> <span class="n">nowTime</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="na">getTime</span><span class="o">();</span>
 
-            <span class="c1">//https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-30#section-4.1.4</span>
-            <span class="c1">//token MUST NOT be accepted on or after any specified exp time:</span>
-            <span class="nc">Date</span> <span class="n">exp</span> <span class="o">=</span> <span class="n">claims</span><span class="o">.</span><span class="na">getExpiration</span><span class="o">();</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">exp</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">//https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-30#section-4.1.4</span>
+        <span class="c1">//token MUST NOT be accepted on or after any specified exp time:</span>
+        <span class="nc">Date</span> <span class="n">exp</span> <span class="o">=</span> <span class="n">claims</span><span class="o">.</span><span class="na">getExpiration</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">exp</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
 
-                <span class="kt">long</span> <span class="n">maxTime</span> <span class="o">=</span> <span class="n">nowTime</span> <span class="o">-</span> <span class="k">this</span><span class="o">.</span><span class="na">allowedClockSkewMillis</span><span class="o">;</span>
-                <span class="nc">Date</span> <span class="n">max</span> <span class="o">=</span> <span class="n">allowSkew</span> <span class="o">?</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">(</span><span class="n">maxTime</span><span class="o">)</span> <span class="o">:</span> <span class="n">now</span><span class="o">;</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">max</span><span class="o">.</span><span class="na">after</span><span class="o">(</span><span class="n">exp</span><span class="o">))</span> <span class="o">{</span>
-                    <span class="n">sdf</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SimpleDateFormat</span><span class="o">(</span><span class="no">ISO_8601_FORMAT</span><span class="o">);</span>
-                    <span class="nc">String</span> <span class="n">expVal</span> <span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">exp</span><span class="o">);</span>
-                    <span class="nc">String</span> <span class="n">nowVal</span> <span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">now</span><span class="o">);</span>
+            <span class="kt">long</span> <span class="n">maxTime</span> <span class="o">=</span> <span class="n">nowTime</span> <span class="o">-</span> <span class="k">this</span><span class="o">.</span><span class="na">allowedClockSkewMillis</span><span class="o">;</span>
+            <span class="nc">Date</span> <span class="n">max</span> <span class="o">=</span> <span class="n">allowSkew</span> <span class="o">?</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">(</span><span class="n">maxTime</span><span class="o">)</span> <span class="o">:</span> <span class="n">now</span><span class="o">;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">max</span><span class="o">.</span><span class="na">after</span><span class="o">(</span><span class="n">exp</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">sdf</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SimpleDateFormat</span><span class="o">(</span><span class="no">ISO_8601_FORMAT</span><span class="o">);</span>
+                <span class="nc">String</span> <span class="n">expVal</span> <span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">exp</span><span class="o">);</span>
+                <span class="nc">String</span> <span class="n">nowVal</span> <span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">now</span><span class="o">);</span>
 
-                    <span class="kt">long</span> <span class="n">differenceMillis</span> <span class="o">=</span> <span class="n">maxTime</span> <span class="o">-</span> <span class="n">exp</span><span class="o">.</span><span class="na">getTime</span><span class="o">();</span>
+                <span class="kt">long</span> <span class="n">differenceMillis</span> <span class="o">=</span> <span class="n">maxTime</span> <span class="o">-</span> <span class="n">exp</span><span class="o">.</span><span class="na">getTime</span><span class="o">();</span>
 
-                    <span class="nc">String</span> <span class="n">msg</span> <span class="o">=</span> <span class="s">"JWT expired at "</span> <span class="o">+</span> <span class="n">expVal</span> <span class="o">+</span> <span class="s">". Current time: "</span> <span class="o">+</span> <span class="n">nowVal</span> <span class="o">+</span> <span class="s">", a difference of "</span> <span class="o">+</span>
-                        <span class="n">differenceMillis</span> <span class="o">+</span> <span class="s">" milliseconds.  Allowed clock skew: "</span> <span class="o">+</span>
-                        <span class="k">this</span><span class="o">.</span><span class="na">allowedClockSkewMillis</span> <span class="o">+</span> <span class="s">" milliseconds."</span><span class="o">;</span>
-                    <span class="k">throw</span> <span class="k">new</span> <span class="nf">ExpiredJwtException</span><span class="o">(</span><span class="n">header</span><span class="o">,</span> <span class="n">claims</span><span class="o">,</span> <span class="n">msg</span><span class="o">);</span>
-                <span class="o">}</span>
+                <span class="nc">String</span> <span class="n">msg</span> <span class="o">=</span> <span class="s">"JWT expired at "</span> <span class="o">+</span> <span class="n">expVal</span> <span class="o">+</span> <span class="s">". Current time: "</span> <span class="o">+</span> <span class="n">nowVal</span> <span class="o">+</span> <span class="s">", a difference of "</span> <span class="o">+</span>
+                    <span class="n">differenceMillis</span> <span class="o">+</span> <span class="s">" milliseconds.  Allowed clock skew: "</span> <span class="o">+</span>
+                    <span class="k">this</span><span class="o">.</span><span class="na">allowedClockSkewMillis</span> <span class="o">+</span> <span class="s">" milliseconds."</span><span class="o">;</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nf">ExpiredJwtException</span><span class="o">(</span><span class="n">header</span><span class="o">,</span> <span class="n">claims</span><span class="o">,</span> <span class="n">msg</span><span class="o">);</span>
             <span class="o">}</span>
-
-            <span class="c1">//https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-30#section-4.1.5</span>
-            <span class="c1">//token MUST NOT be accepted before any specified nbf time:</span>
-            <span class="nc">Date</span> <span class="n">nbf</span> <span class="o">=</span> <span class="n">claims</span><span class="o">.</span><span class="na">getNotBefore</span><span class="o">();</span>
-            <span class="k">if</span> <span class="o">(</span><span class="n">nbf</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
-
-                <span class="kt">long</span> <span class="n">minTime</span> <span class="o">=</span> <span class="n">nowTime</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">allowedClockSkewMillis</span><span class="o">;</span>
-                <span class="nc">Date</span> <span class="n">min</span> <span class="o">=</span> <span class="n">allowSkew</span> <span class="o">?</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">(</span><span class="n">minTime</span><span class="o">)</span> <span class="o">:</span> <span class="n">now</span><span class="o">;</span>
-                <span class="k">if</span> <span class="o">(</span><span class="n">min</span><span class="o">.</span><span class="na">before</span><span class="o">(</span><span class="n">nbf</span><span class="o">))</span> <span class="o">{</span>
-                    <span class="n">sdf</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SimpleDateFormat</span><span class="o">(</span><span class="no">ISO_8601_FORMAT</span><span class="o">);</span>
-                    <span class="nc">String</span> <span class="n">nbfVal</span> <span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">nbf</span><span class="o">);</span>
-                    <span class="nc">String</span> <span class="n">nowVal</span> <span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">now</span><span class="o">);</span>
-
-                    <span class="kt">long</span> <span class="n">differenceMillis</span> <span class="o">=</span> <span class="n">nbf</span><span class="o">.</span><span class="na">getTime</span><span class="o">()</span> <span class="o">-</span> <span class="n">minTime</span><span class="o">;</span>
-
-                    <span class="nc">String</span> <span class="n">msg</span> <span class="o">=</span> <span class="s">"JWT must not be accepted before "</span> <span class="o">+</span> <span class="n">nbfVal</span> <span class="o">+</span> <span class="s">". Current time: "</span> <span class="o">+</span> <span class="n">nowVal</span> <span class="o">+</span>
-                        <span class="s">", a difference of "</span> <span class="o">+</span>
-                        <span class="n">differenceMillis</span> <span class="o">+</span> <span class="s">" milliseconds.  Allowed clock skew: "</span> <span class="o">+</span>
-                        <span class="k">this</span><span class="o">.</span><span class="na">allowedClockSkewMillis</span> <span class="o">+</span> <span class="s">" milliseconds."</span><span class="o">;</span>
-                    <span class="k">throw</span> <span class="k">new</span> <span class="nf">PrematureJwtException</span><span class="o">(</span><span class="n">header</span><span class="o">,</span> <span class="n">claims</span><span class="o">,</span> <span class="n">msg</span><span class="o">);</span>
-                <span class="o">}</span>
-            <span class="o">}</span>
-
-            <span class="n">validateExpectedClaims</span><span class="o">(</span><span class="n">header</span><span class="o">,</span> <span class="n">claims</span><span class="o">);</span>
         <span class="o">}</span>
+
+        <span class="c1">//https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-30#section-4.1.5</span>
+        <span class="c1">//token MUST NOT be accepted before any specified nbf time:</span>
+        <span class="nc">Date</span> <span class="n">nbf</span> <span class="o">=</span> <span class="n">claims</span><span class="o">.</span><span class="na">getNotBefore</span><span class="o">();</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">nbf</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+
+            <span class="kt">long</span> <span class="n">minTime</span> <span class="o">=</span> <span class="n">nowTime</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">allowedClockSkewMillis</span><span class="o">;</span>
+            <span class="nc">Date</span> <span class="n">min</span> <span class="o">=</span> <span class="n">allowSkew</span> <span class="o">?</span> <span class="k">new</span> <span class="nc">Date</span><span class="o">(</span><span class="n">minTime</span><span class="o">)</span> <span class="o">:</span> <span class="n">now</span><span class="o">;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">min</span><span class="o">.</span><span class="na">before</span><span class="o">(</span><span class="n">nbf</span><span class="o">))</span> <span class="o">{</span>
+                <span class="n">sdf</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">SimpleDateFormat</span><span class="o">(</span><span class="no">ISO_8601_FORMAT</span><span class="o">);</span>
+                <span class="nc">String</span> <span class="n">nbfVal</span> <span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">nbf</span><span class="o">);</span>
+                <span class="nc">String</span> <span class="n">nowVal</span> <span class="o">=</span> <span class="n">sdf</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">now</span><span class="o">);</span>
+
+                <span class="kt">long</span> <span class="n">differenceMillis</span> <span class="o">=</span> <span class="n">nbf</span><span class="o">.</span><span class="na">getTime</span><span class="o">()</span> <span class="o">-</span> <span class="n">minTime</span><span class="o">;</span>
+
+                <span class="nc">String</span> <span class="n">msg</span> <span class="o">=</span> <span class="s">"JWT must not be accepted before "</span> <span class="o">+</span> <span class="n">nbfVal</span> <span class="o">+</span> <span class="s">". Current time: "</span> <span class="o">+</span> <span class="n">nowVal</span> <span class="o">+</span>
+                    <span class="s">", a difference of "</span> <span class="o">+</span>
+                    <span class="n">differenceMillis</span> <span class="o">+</span> <span class="s">" milliseconds.  Allowed clock skew: "</span> <span class="o">+</span>
+                    <span class="k">this</span><span class="o">.</span><span class="na">allowedClockSkewMillis</span> <span class="o">+</span> <span class="s">" milliseconds."</span><span class="o">;</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nf">PrematureJwtException</span><span class="o">(</span><span class="n">header</span><span class="o">,</span> <span class="n">claims</span><span class="o">,</span> <span class="n">msg</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="n">validateExpectedClaims</span><span class="o">(</span><span class="n">header</span><span class="o">,</span> <span class="n">claims</span><span class="o">);</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<h1 id="jwt-compact">jwt compact</h1>
+
+<p>파싱과 받대로 토큰생성시 signature 영역 처리는 다음과 같다.</p>
+
+<p>header + body를 다시 검증된 key를 사용해 한번더 암호화하고 이를 토큰에 추가한다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="nc">String</span> <span class="n">jwt</span> <span class="o">=</span> <span class="n">base64UrlEncodedHeader</span> <span class="o">+</span> <span class="nc">JwtParser</span><span class="o">.</span><span class="na">SEPARATOR_CHAR</span> <span class="o">+</span> <span class="n">base64UrlEncodedBody</span><span class="o">;</span>
+
+    <span class="k">if</span> <span class="o">(</span><span class="n">key</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span> <span class="c1">//jwt must be signed:</span>
+
+        <span class="nc">JwtSigner</span> <span class="n">signer</span> <span class="o">=</span> <span class="n">createSigner</span><span class="o">(</span><span class="n">algorithm</span><span class="o">,</span> <span class="n">key</span><span class="o">);</span>
+
+        <span class="nc">String</span> <span class="n">base64UrlSignature</span> <span class="o">=</span> <span class="n">signer</span><span class="o">.</span><span class="na">sign</span><span class="o">(</span><span class="n">jwt</span><span class="o">);</span>
+
+        <span class="n">jwt</span> <span class="o">+=</span> <span class="nc">JwtParser</span><span class="o">.</span><span class="na">SEPARATOR_CHAR</span> <span class="o">+</span> <span class="n">base64UrlSignature</span><span class="o">;</span>
+    <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+        <span class="c1">// no signature (plaintext), but must terminate w/ a period, see</span>
+        <span class="c1">// https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-25#section-6.1</span>
+        <span class="n">jwt</span> <span class="o">+=</span> <span class="nc">JwtParser</span><span class="o">.</span><span class="na">SEPARATOR_CHAR</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="k">return</span> <span class="n">jwt</span><span class="o">;</span>
 </code></pre></div></div>
 
 <h2 id="jwt를-사용한다는것">jwt를 사용한다는것</h2>

@@ -1,28 +1,6 @@
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse</p>
-
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">Razorpay</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">razorpay</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">rzp</span> <span class="o">=</span> <span class="nx">Razorpay</span><span class="p">({</span>
-	<span class="na">key_id</span><span class="p">:</span> <span class="dl">'</span><span class="s1">KEY_ID</span><span class="dl">'</span><span class="p">,</span>
-	<span class="na">secret</span><span class="p">:</span> <span class="dl">'</span><span class="s1">name</span><span class="dl">'</span>
-<span class="p">});</span>
-
-<span class="c1">// capture request</span>
-<span class="nx">rzp</span><span class="p">.</span><span class="nx">capture</span><span class="p">(</span><span class="nx">payment_id</span><span class="p">,</span> <span class="nx">cost</span><span class="p">)</span>
-	<span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-		<span class="k">return</span> <span class="mi">2</span><span class="p">;</span>
-	<span class="p">})</span>
-</code></pre></div></div>
-
-<h1 id="jwt-소스코드를-뜯어보자">jwt 소스코드를 뜯어보자</h1>
-
-<p>jwt에 대해서 조금 궁금해져서</p>
-
-<p>사용방법을 조금 더 고민하다가 파싱함수를 뜯어보기로 했다.</p>
-
-<p>jwt는 <strong>DefaultJws</strong>라는 클래스에 의해 만들어지고 쓰여진다.</p>
-
-<p>상단영역을 보게되면 멤버 변수로 header, body, signature 로 구성되어있다. 
+<p>jwt에 대해서 조금 궁금해져서 사용방법을 조금 더 고민하다가 파싱함수를 뜯어보기로 했다. 
+jwt는 <strong>DefaultJws</strong>라는 클래스에 의해 만들어지고 쓰여진다. 
+상단영역을 보게되면 멤버 변수로 header, body, signature 로 구성되어있다. 
 body가 payload 영역으로 추측된다.</p>
 
 <p>signature 영역은 string, 

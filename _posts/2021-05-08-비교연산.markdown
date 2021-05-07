@@ -1,0 +1,249 @@
+---
+layout: post
+title:  "jwt파싱2 (signature)"
+date:   2021-04-20 20:35:00 +0530
+categories: java jwt
+---
+
+signature부분은 토큰의 변조 방지를 담당한다. 
+
+토큰내용이야 base64로 인코딩되어있어 얼마든지 디코딩이 가능하나
+
+변조는 불가능해야 한다. 
+
+
+<br/>
+
+# jwt파싱 (step1-1, SignatureAlgorithm)
+
+우선 header영역의 alg값을 읽어온다. 이값이 null 이면 예외를 뱉는다. 
+SignatureAlorithm 클래스는 enum 타입고 각종 hash 함수들의 이름들이 명시되어있다. 
+
+```java
+    SignatureAlgorithm algorithm = null;
+
+    if (header != null) {
+        String alg = jwsHeader.getAlgorithm();
+        if (Strings.hasText(alg)) {
+            algorithm = SignatureAlgorithm.forName(alg);
+        }
+    }
+
+    if (algorithm == null || algorithm == SignatureAlgorithm.NONE) {
+        //it is plaintext, but it has a signature.  This is invalid:
+        String msg = "JWT string has a digest/signature, but the header does not reference a valid signature " +
+                        "algorithm.";
+        throw new MalformedJwtException(msg);
+    }
+
+```
+<br/>
+
+# jwt파싱 (step1-2, key)
+
+jwt 파싱을 위해서는 alg외에 key가 필요하다. 
+
+jwtparser의 key 변수는 1가지가 아니다. 
+
+keyBytes를 제외한 나머지 2개는 인터페이스다. 
+
+```java
+    private byte[] keyBytes;
+
+    private Key key;
+
+    private SigningKeyResolver signingKeyResolver;
+```
+<br/>
+
+step1-1에서 alg를 읽은후에 다시 key에대한 검증이 시작된다. 
+
+key는 key나 keybyte가 null이 아니면 되는데, 둘다 값이 있으면 안된다고 한다. 
+
+key가 없고 keybyte만 존재하는 경우는 hmac인 경우에만 가능하다. 
+
+
+```java
+    if (key != null && keyBytes != null) {
+        throw new IllegalStateException("A key object and key bytes cannot both be specified. Choose either.");
+    } else if ((key != null || keyBytes != null) && signingKeyResolver != null) {
+        String object = key != null ? "a key object" : "key bytes";
+        throw new IllegalStateException("A signing key resolver and " + object + " cannot both be specified. Choose either.");
+    }
+
+    //digitally signed, let's assert the signature:
+    Key key = this.key;
+
+    if (key == null) { //fall back to keyBytes
+
+        byte[] keyBytes = this.keyBytes;
+
+        if (Objects.isEmpty(keyBytes) && signingKeyResolver != null) { //use the signingKeyResolver
+            if (claims != null) {
+                key = signingKeyResolver.resolveSigningKey(jwsHeader, claims);
+            } else {
+                key = signingKeyResolver.resolveSigningKey(jwsHeader, payload);
+            }
+        }
+
+        if (!Objects.isEmpty(keyBytes)) {
+
+            Assert.isTrue(algorithm.isHmac(),
+                            "Key bytes can only be specified for HMAC signatures. Please specify a PublicKey or PrivateKey instance.");
+
+            key = new SecretKeySpec(keyBytes, algorithm.getJcaName());
+        }
+    }
+
+    Assert.notNull(key, "A signing key must be specified if the specified JWT is digitally signed.");
+
+```
+<br/>
+이렇게 alg, key가 설정이 됐으면 이에 대한 유효성검증을 한다.
+
+```java
+    JwtSignatureValidator validator;
+    try {
+        validator = createSignatureValidator(algorithm, key);
+    } catch (IllegalArgumentException e) {
+        String algName = algorithm.getValue();
+        String msg = "The parsed JWT indicates it was signed with the " +  algName + " signature " +
+                        "algorithm, but the specified signing key of type " + key.getClass().getName() +
+                        " may not be used to validate " + algName + " signatures.  Because the specified " +
+                        "signing key reflects a specific and expected algorithm, and the JWT does not reflect " +
+                        "this algorithm, it is likely that the JWT was not expected and therefore should not be " +
+                        "trusted.  Another possibility is that the parser was configured with the incorrect " +
+                        "signing key, but this cannot be assumed for security reasons.";
+        throw new UnsupportedJwtException(msg, e);
+    }
+
+    if (!validator.isValid(jwtWithoutSignature, base64UrlEncodedDigest)) {
+        String msg = "JWT signature does not match locally computed signature. JWT validity cannot be " +
+                        "asserted and should not be trusted.";
+        throw new SignatureException(msg);
+    }
+    
+
+```
+<br/>
+여기까지 완료가 되었으면 마지막으로
+
+토큰 만료시간과 엠바고(?) 체크를 진행한다. 
+
+```java
+    //since 0.3:
+    if (claims != null) {
+
+        SimpleDateFormat sdf;
+
+        final Date now = this.clock.now();
+        long nowTime = now.getTime();
+
+        //https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-30#section-4.1.4
+        //token MUST NOT be accepted on or after any specified exp time:
+        Date exp = claims.getExpiration();
+        if (exp != null) {
+
+            long maxTime = nowTime - this.allowedClockSkewMillis;
+            Date max = allowSkew ? new Date(maxTime) : now;
+            if (max.after(exp)) {
+                sdf = new SimpleDateFormat(ISO_8601_FORMAT);
+                String expVal = sdf.format(exp);
+                String nowVal = sdf.format(now);
+
+                long differenceMillis = maxTime - exp.getTime();
+
+                String msg = "JWT expired at " + expVal + ". Current time: " + nowVal + ", a difference of " +
+                    differenceMillis + " milliseconds.  Allowed clock skew: " +
+                    this.allowedClockSkewMillis + " milliseconds.";
+                throw new ExpiredJwtException(header, claims, msg);
+            }
+        }
+
+        //https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-30#section-4.1.5
+        //token MUST NOT be accepted before any specified nbf time:
+        Date nbf = claims.getNotBefore();
+        if (nbf != null) {
+
+            long minTime = nowTime + this.allowedClockSkewMillis;
+            Date min = allowSkew ? new Date(minTime) : now;
+            if (min.before(nbf)) {
+                sdf = new SimpleDateFormat(ISO_8601_FORMAT);
+                String nbfVal = sdf.format(nbf);
+                String nowVal = sdf.format(now);
+
+                long differenceMillis = nbf.getTime() - minTime;
+
+                String msg = "JWT must not be accepted before " + nbfVal + ". Current time: " + nowVal +
+                    ", a difference of " +
+                    differenceMillis + " milliseconds.  Allowed clock skew: " +
+                    this.allowedClockSkewMillis + " milliseconds.";
+                throw new PrematureJwtException(header, claims, msg);
+            }
+        }
+
+        validateExpectedClaims(header, claims);
+    }
+```
+<br/>
+
+# jwt compact
+
+파싱과 받대로 토큰생성시 signature 영역 처리는 다음과 같다.
+
+header + body를 다시 검증된 key를 사용해 한번더 암호화하고 이를 토큰에 추가한다.
+
+```java
+    String jwt = base64UrlEncodedHeader + JwtParser.SEPARATOR_CHAR + base64UrlEncodedBody;
+
+    if (key != null) { //jwt must be signed:
+
+        JwtSigner signer = createSigner(algorithm, key);
+
+        String base64UrlSignature = signer.sign(jwt);
+
+        jwt += JwtParser.SEPARATOR_CHAR + base64UrlSignature;
+    } else {
+        // no signature (plaintext), but must terminate w/ a period, see
+        // https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-25#section-6.1
+        jwt += JwtParser.SEPARATOR_CHAR;
+    }
+
+    return jwt;
+```
+
+
+<br>
+
+## jwt를 사용한다는것
+
+jwt를 보통 대부분 로그인 이후의 고객의 정보를 저장하기 위해 사용한다. 
+
+이렇게 저장된 정보는 서비스의 기능 수행시 
+
+매번 DB 조회없이 진행 할 수 있다는 점에서 DB부하를 줄일 수 있고 
+
+불필요한 IO를 줄일 수 있기 때문에 수행시간도 절약 할 수 있다.  
+
+<br>
+
+그럼 "세션을 사용하면 되지 않나" 라고 이의를 제기 할 수도 있지만, 
+
+일반적인 웹페이지에서는 그렇게 해도 될것 같다.
+
+jwt를 쿠키에 저장하는것보다 세션에 저장하는것이 보안상에도 좋다. 
+
+다만 프론트가 웹이 아닌 앱인경우에는 서버세션과 쿠키, 혹은 앱의 로컬스토리지를 활용하는것은 완전 다른 얘기다. 
+
+<br>
+
+그럼에도 불구하고 jwt토큰에 위험성은 존재한다. 
+
+사실상 key를 제외한 모든정보가 base64 디코딩을 하면 조회가 가능하다 
+
+파싱함수를 봤지만, 키가 alg에 적힌 방식이 맞는지, 토큰 생성시에 사용한 키가 맞는지 체크하는것을 제외하곤 크게 별다른게 없다.  
+
+그렇기 때문에 민감한 정보는 가급적 최소화 시키는게 좋고
+
+그래도 필요하면 암호화를 하는게 좋을듯 하다. 
+

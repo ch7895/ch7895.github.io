@@ -1,6 +1,18 @@
 [
   
     {
+      "title"    : "==, equals",
+      "title-lower"    : "==, equals",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "java",
+      "tags"     : "",
+      "url"      : "/java/2021/05/09/equals,==-copy.html",
+      "date"     : "2021-05-09 00:05:00 +0900",
+      "content"     : "변수값을 비교할때 종종 ‘==’, equals 사용하지만둘은 사실상 사상만 비슷할뿐 헷갈려서는 안되는 사항이다.int n1 = 1;int n2 = 1;System.out.println(n1==n2) // true우선 primitive type int의 2개의 변수에 동일한 value를 할당하고 비교했을 시 결과는true  이다.그리고 n1.equals..."
+    } ,
+  
+    {
       "title"    : "jwt파싱2 (signature)",
       "title-lower"    : "jwt파싱2 (signature)",
       "sub-titile" : "",

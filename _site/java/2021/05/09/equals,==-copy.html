@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>==, equals</title>
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>==, equals | Your awesome title</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="==, equals" />
+<meta name="author" content="GitHub User" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="변수값을 비교할때 종종 ‘==’, equals 사용하지만" />
+<meta property="og:description" content="변수값을 비교할때 종종 ‘==’, equals 사용하지만" />
+<meta property="og:site_name" content="Your awesome title" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-09T00:05:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="==, equals" />
+<script type="application/ld+json">
+{"url":"/java/2021/05/09/equals,==-copy.html","headline":"==, equals","dateModified":"2021-05-09T00:05:00+09:00","datePublished":"2021-05-09T00:05:00+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"/java/2021/05/09/equals,==-copy.html"},"author":{"@type":"Person","name":"GitHub User"},"description":"변수값을 비교할때 종종 ‘==’, equals 사용하지만","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/assets/js/darkmode.js"></script>
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header condensed">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/portfolio.jpeg" alt="ch7895" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">ch7895</a>
+      </h2>
+      </div><p class="tagline">Developer.</p></div>
+      
+      <ul class="social about-footer condensed"><a href="https://github.com/ch7895" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/창규-김-716b1990" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/java/2021/05/09/equals,==-copy.html">
+    <h2 class="post-title">==, equals</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>May 9, 2021</div><ul class="post-categories"><li>java</li></ul></div>
+  <div class="post">
+    <p>변수값을 비교할때 종종 ‘==’, equals 사용하지만</p>
+
+<p>둘은 사실상 사상만 비슷할뿐 헷갈려서는 안되는 사항이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kt">int</span> <span class="n">n1</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+<span class="kt">int</span> <span class="n">n2</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">n1</span><span class="o">==</span><span class="n">n2</span><span class="o">)</span> <span class="c1">// true</span>
+
+</code></pre></div></div>
+
+<p>우선 primitive type int의 2개의 변수에 동일한 value를 할당하고 비교했을 시 결과는</p>
+
+<p><strong>true</strong>  이다.</p>
+
+<p>그리고 n1.equals(n2)는 컴파일조차 안된다.</p>
+
+<p>그럼 여기서 2가지가 확인된다.</p>
+
+<ul>
+  <li>’==’ 는 primitive type에서는 값을 비교한다.</li>
+  <li>‘equals()’ primitive type 에서 사용할수 없다.</li>
+</ul>
+
+<p>후자의 경우는 사실 당연한 얘기다. equals는 Object를 상속하는 referrence type에서 사용하는 함수다.</p>
+
+<p><br />
+그럼 이제 primitive type과 referrence type 은 다른거구나</p>
+
+<p>int와 Integer는 다른거구나</p>
+
+<p>라는 감이 온다. 이제 equals를 보자</p>
+
+<p>우선 클래스를 int변수 하나를 가진 클래스를 선언하고</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">AA</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">aa</span><span class="o">;</span>
+
+        <span class="no">AA</span><span class="o">(</span><span class="kt">int</span> <span class="n">n</span> <span class="o">){</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">aa</span> <span class="o">=</span> <span class="n">n</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="o">...</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<p>멤버변수에 동일한 값을 할당하는 클래스 2개를 생성했다.</p>
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="no">AA</span> <span class="n">a</span> <span class="o">=</span> <span class="k">new</span> <span class="no">AA</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+<span class="no">AA</span> <span class="n">b</span> <span class="o">=</span> <span class="k">new</span> <span class="no">AA</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">==</span><span class="n">b</span><span class="o">);</span>           <span class="c1">//false</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">a</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">b</span><span class="o">));</span>    <span class="c1">//false</span>
+</code></pre></div></div>
+
+<p>그리고 얘를 ‘==’,’equals’를 통해 비교하면 둘다 <string>false&lt;/strong&gt; 다.</string></p>
+
+<p>referrence type에서는 비교연산자를 쓰면안된다는건가? 싶은 결과다</p>
+
+<p>그럼 뭐가 다른걸까</p>
+
+<p>우선 primitive type과 referrence type이 메모리에 저장되는 구조를 생각해보면 감이 온다.</p>
+
+<p>primitive type은 스택에 할당받으면 그 공간에 value를 저장하고</p>
+
+<p>referrence type의 value는 스택이 아니라 힙영역에 저장을 하고, 스택에는 value가 저장된 힙영역의 주소가 저장된다.</p>
+
+<p>즉 a와 b는 각각 스택에 저장된 값(힙영역의 주소)가 다르기 때문에 ‘==’ <strong> false </strong> 이다.</p>
+
+<p><br /></p>
+<h3> 그럼 equals는 왜? </h3>
+
+<p>object 클래스의 equals 함수를 보자</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">obj</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="o">(</span><span class="k">this</span> <span class="o">==</span> <span class="n">obj</span><span class="o">);</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+<p>equals도 결국은 ‘==’ 이다.</p>
+
+<p>그렇기 때문에 equals()를 만약 멤버변수의 값이 모두 같은 인스턴스 인 경우에 true 를 반환하는 형태로 사용하고싶다면
+equals 함수를 오버라이딩 해서 사용하면 된다.</p>
+
+<p><br /></p>
+
+<p>그런데 이쯤에서 조금 헷갈리는게 있을 수 있다.</p>
+
+<p>Stirng은 equals가 되던데, 
+Integer는 ‘==’ 이된데,</p>
+
+<p>뭘까… ?</p>
+
+  </div></div>
+
+    </section>
+    <footer class="condensed">
+      <ul class="social about-footer condensed"><a href="https://github.com/ch7895" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/창규-김-716b1990" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/assets/js/darkmode.js"></script>
+  
+  <script src="/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/assets/js/search.js"></script>
+  
+</body>
+
+</html>

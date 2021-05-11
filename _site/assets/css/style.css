@@ -454,6 +454,8 @@ main .about .about-header .about-title { display: flex; flex-direction: column; 
 
 @media screen and (max-width: 768px) { .posts, .post-container { padding: 0 !important; margin-top: 0; } }
 
+.posts li, .post-container li { padding-top: 10px; }
+
 .post-container { padding-left: 30px; }
 
 .post { font-family: "Merriweather", sans-serif; font-weight: 10; color: #222; line-height: 1.9em; }

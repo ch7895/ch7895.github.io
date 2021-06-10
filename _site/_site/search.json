@@ -1,0 +1,63 @@
+[
+  
+    {
+      "title"    : "IntegerCache",
+      "title-lower"    : "integercache",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "java",
+      "tags"     : "",
+      "url"      : "/java/2021/05/10/IntegerCache.html",
+      "date"     : "2021-05-10 19:30:00 +0900",
+      "content"     : "앞서 스택에는 실제 값이 존재하는 힙의 주소를 저장한다고 했습니다.  그리고 “==”는 변수가 선언던 곳의 값을 비교하는것 뿐이구요그냥 단지 데이터 타입에 따라 누구는 실제 값을 저장하고 다른 누구는 주소를 저장한다는것과굳이 한가지 더 이유는 아마도 primitive type은 공간의 사이즈가 고정적인 반면에클래스들은 그렇지 않은게 이유이지 않을까 합..."
+    } ,
+  
+    {
+      "title"    : "==, equals",
+      "title-lower"    : "==, equals",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "java",
+      "tags"     : "",
+      "url"      : "/java/2021/05/09/equals,==-copy.html",
+      "date"     : "2021-05-09 00:05:00 +0900",
+      "content"     : "변수값을 비교할때 종종 ‘==’, equals 사용하지만 둘은 사실상 사상만 비슷할뿐 혼동할 필요는 없습니다.int n1 = 1;int n2 = 1;System.out.println(n1==n2) // true우선 primitive type인 int의 2개의 변수에 동일한 value를 할당하고 비교했을 시 결과는true  입니다.그리고 n1.equal..."
+    } ,
+  
+    {
+      "title"    : "jwt파싱2 (signature)",
+      "title-lower"    : "jwt파싱2 (signature)",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "javajwt",
+      "tags"     : "",
+      "url"      : "/java/jwt/2021/04/21/jwt2.html",
+      "date"     : "2021-04-21 00:05:00 +0900",
+      "content"     : "signature부분은 토큰의 변조 방지를 담당한다.토큰내용이야 base64로 인코딩되어있어 얼마든지 디코딩이 가능하나변조는 불가능해야 한다.jwt파싱 (step1-1, SignatureAlgorithm)우선 header영역의 alg값을 읽어온다. 이값이 null 이면 예외를 뱉는다. SignatureAlorithm 클래스는 enum 타입고 각종 ha..."
+    } ,
+  
+    {
+      "title"    : "jwt파싱1 (header, payload)",
+      "title-lower"    : "jwt파싱1 (header, payload)",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "javajwt",
+      "tags"     : "",
+      "url"      : "/java/jwt/2021/04/19/jwt1.html",
+      "date"     : "2021-04-19 04:31:31 +0900",
+      "content"     : "jwt에 대해서 조금 궁금해져서 사용방법을 조금 더 고민하다가 파싱함수를 뜯어보기로 했다. jwt는 DefaultJws라는 클래스에 의해 만들어지고 쓰여진다. 상단영역을 보게되면 멤버 변수로 header, body, signature 로 구성되어있다. body가 payload 영역으로 추측된다.signature 영역은 string, body는 제네릭,..."
+    } ,
+  
+    {
+      "title"    : "Integrating razorpay into your webapp",
+      "title-lower"    : "integrating razorpay into your webapp",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "JavascriptNodeJS",
+      "tags"     : "",
+      "url"      : "/javascript/nodejs/2019/03/24/welcome-to-jekyll.html",
+      "date"     : "2019-03-24 00:33:36 +0900",
+      "content"     : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ..."
+    } 
+  
+]

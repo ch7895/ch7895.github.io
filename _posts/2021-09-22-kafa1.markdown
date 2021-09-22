@@ -9,7 +9,7 @@ categories: kafka
 
 1. kafka 설치
 
-    ```code
+    ```
         brew install kafka
     ``` 
 
@@ -17,12 +17,12 @@ categories: kafka
     
     - kafka를 관리하기 위한 목적
 
-    ```code
+    ```
         brew install zookeeper
     ```
 
 3. 실행
-    ```code
+    ```
         zkserver start
         brew services start kafka
     ````
@@ -31,11 +31,11 @@ categories: kafka
 4. topic 테스트
 
     4-1. 토픽생성
-    ```code
+    ```
         kafka-topics --create --zookeeper localhost:2181 
     ```
     4-2. 메시지발행
-    ```code
+    ```
         kafka-console-producer --broker-list localhost:9092 --topic test
         >hi
         >hello

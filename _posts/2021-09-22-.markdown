@@ -1,0 +1,61 @@
+---
+layout: post
+title:  "brew install kafka"
+date:   2021-09-22 13:00:00 +0530
+categories: kafka
+---
+
+카프카 설치하기 (with homebrew)
+
+1. kafka 설치
+
+    ```code
+        brew install kafka
+    ``` 
+
+2. zookeeper 설치
+    
+    - kafka를 관리하기 위한 목적
+
+    ```code
+        brew install zookeeper
+    ```
+
+3. 실행
+    ```code
+        zkserver start
+        brew services start kafka
+    ````
+
+
+4. topic 테스트
+
+    4-1. 토픽생성
+    ```code
+        kafka-topics --create --zookeeper localhost:2181 
+    ```
+    4-2. 메시지발행
+    ```code
+        kafka-console-producer --broker-list localhost:9092 --topic test
+        >hi
+        >hello
+        >test
+    ```
+    4-3. 메시지구독
+    ```
+        kafka-console-consumer --bootstrap-server localhost:9092 --topic test --from-beginning
+
+        hi
+        hello
+        test
+        
+        ^CProcessed a total of 3 messages
+    ```
+
+
+
+
+
+
+
+

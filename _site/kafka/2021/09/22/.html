@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/style.css">
+<title>brew install kafka</title>
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>brew install kafka | Your awesome title</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="brew install kafka" />
+<meta name="author" content="GitHub User" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="카프카 설치하기 (with homebrew)" />
+<meta property="og:description" content="카프카 설치하기 (with homebrew)" />
+<meta property="og:site_name" content="Your awesome title" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-09-22T16:30:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="brew install kafka" />
+<script type="application/ld+json">
+{"url":"/kafka/2021/09/22/.html","author":{"@type":"Person","name":"GitHub User"},"headline":"brew install kafka","datePublished":"2021-09-22T16:30:00+09:00","dateModified":"2021-09-22T16:30:00+09:00","description":"카프카 설치하기 (with homebrew)","mainEntityOfPage":{"@type":"WebPage","@id":"/kafka/2021/09/22/.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<script type="text/javascript" src="/assets/js/darkmode.js"></script>
+
+</head><body>
+  <main class="container">
+    <section class="about">
+      <div class="about-header condensed">
+      <div class="about-title">
+      <a href="/">
+        
+        <img src="/assets/portfolio.jpeg" alt="ch7895" />
+        
+      </a>
+      <h2 id="title">
+        <a href="/">ch7895</a>
+      </h2>
+      </div><p class="tagline">Developer.</p></div>
+      
+      <ul class="social about-footer condensed"><a href="https://github.com/ch7895" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/창규-김-716b1990" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </section>
+    <section class="content">
+      <div class="post-container">
+  <a class="post-link" href="/kafka/2021/09/22/.html">
+    <h2 class="post-title">brew install kafka</h2>
+  </a>
+  <div class="post-meta">
+    <div class="post-date"><i class="icon-calendar"></i>Sep 22, 2021</div><ul class="post-categories"><li>kafka</li></ul></div>
+  <div class="post">
+    <p>카프카 설치하기 (with homebrew)</p>
+
+<ol>
+  <li>
+    <p>kafka 설치</p>
+
+    <pre><code class="language-code">     brew install kafka
+</code></pre>
+  </li>
+  <li>
+    <p>zookeeper 설치</p>
+
+    <ul>
+      <li>kafka를 관리하기 위한 목적</li>
+    </ul>
+
+    <pre><code class="language-code">     brew install zookeeper
+</code></pre>
+  </li>
+  <li>실행
+    <pre><code class="language-code">     zkserver start
+     brew services start kafka
+</code></pre>
+  </li>
+  <li>
+    <p>topic 테스트</p>
+
+    <p>4-1. 토픽생성</p>
+    <pre><code class="language-code">     kafka-topics --create --zookeeper localhost:2181 
+</code></pre>
+    <p>4-2. 메시지발행</p>
+    <pre><code class="language-code">     kafka-console-producer --broker-list localhost:9092 --topic test
+     &gt;hi
+     &gt;hello
+     &gt;test
+</code></pre>
+    <p>4-3. 메시지구독</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     kafka-console-consumer --bootstrap-server localhost:9092 --topic test --from-beginning
+
+     hi
+     hello
+     test
+        
+     ^CProcessed a total of 3 messages
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+
+  </div></div>
+
+    </section>
+    <footer class="condensed">
+      <ul class="social about-footer condensed"><a href="https://github.com/ch7895" target="_blank">
+          <li>
+            <i class="icon-github-circled"></i>
+          </li>
+        </a><a href="https://www.linkedin.com/in/창규-김-716b1990" target="_blank">
+          <li>
+            <i class="icon-linkedin-squared"></i>
+          </li>
+        </a></ul><p class="about-footer condensed">&copy;
+        2021</p><div class="about-footer condensed">
+        <p>Dark Mode
+          <i class="icon-moon"></i>
+          <label class="switch">
+            <input type="checkbox" class="dark-mode-toggle">
+            <span class="slider round" onclick="toggleDarkMode()"></span>
+          </label>
+        </p>
+      </div>
+    </footer>
+  </main>
+  
+  <script type="text/javascript" src="/assets/js/darkmode.js"></script>
+  
+  <script src="/assets/js/simple-jekyll-search.min.js"></script>
+  <script src="/assets/js/search.js"></script>
+  
+</body>
+
+</html>

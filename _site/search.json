@@ -1,6 +1,18 @@
 [
   
     {
+      "title"    : "brew install kafka",
+      "title-lower"    : "brew install kafka",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "kafka",
+      "tags"     : "",
+      "url"      : "/kafka/2021/09/22/.html",
+      "date"     : "2021-09-22 16:30:00 +0900",
+      "content"     : "카프카 설치하기 (with homebrew)      kafka 설치         brew install kafka        zookeeper 설치          kafka를 관리하기 위한 목적             brew install zookeeper    실행         zkserver start     brew services st..."
+    } ,
+  
+    {
       "title"    : "IntegerCache",
       "title-lower"    : "integercache",
       "sub-titile" : "",

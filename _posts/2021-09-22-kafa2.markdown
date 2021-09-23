@@ -5,7 +5,10 @@ date:   2021-09-23 15:00:00 +0530
 categories: kafka
 ---
 
-스프링에서 카프카 연동하기(ing)
+스프링에서 카프카 연동하기
+
+- https://oingdaddy.tistory.com/308 실습
+- url 호출로 프로듀서/컨슈머 둘다 간단하게 구현 가능
 
 1. dependecy 추가
 
@@ -14,9 +17,54 @@ categories: kafka
             <groupId>org.springframework.kafka</groupId>
             <artifactId>spring-kafka</artifactId>
         </dependency>
-
     ``` 
+2. 컨트롤러 생성 
+    ```java
+        @Autowired
+        private KafkaSampleProducerService kafkaSampleProducerService;
 
+        @GetMapping(value = "/sendMessage")
+        public void sendMessage(String message) {
+            kafkaSampleProducerService.sendMessage(message);
+        }
+
+    ```
+3. producer (KafkaSampleProducerService)
+    - KafkaTemplate
+    ```java
+        @Autowired
+        private KafkaTemplate<String, String> kafkaTemplate;
+
+        public void sendMessage(String message) {
+            System.out.println("send message : " + message);
+            this.kafkaTemplate.send("topic1", message);
+        }
+    ```
+
+4. consumer 
+    - @KafkaListener 어노테이션 사용
+
+        . 'topics' 의 값이 producer에서 발행한 key와 같아야함 
+    ```java
+        @KafkaListener(topics = "topic1", groupId = "groupId1")
+        public void consume(String message) throws Exception {
+            System.out.println("receive message : " + message);
+        }
+    ```
+
+5. 결과
+    - url 호출
+    ```
+        http://localhost:8080/sendMessage?message='asdfasdfasdf'
+    ```
+
+    - 결과
+    ```
+        send message : asdfasdfasdf
+        ...
+        ...
+        receive message : asdfasdfasdf
+    ```
 
 
 

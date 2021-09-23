@@ -9,7 +9,7 @@
       "tags"     : "",
       "url"      : "/kafka/2021/09/23/kafa2.html",
       "date"     : "2021-09-23 18:30:00 +0900",
-      "content"     : "스프링에서 카프카 연동하기(ing)      dependecy 추가         &amp;lt;dependency&amp;gt;         &amp;lt;groupId&amp;gt;org.springframework.kafka&amp;lt;/groupId&amp;gt;         &amp;lt;artifactId&amp;gt;spring-ka..."
+      "content"     : "스프링에서 카프카 연동하기  https://oingdaddy.tistory.com/308 실습  url 호출로 프로듀서/컨슈머 둘다 간단하게 구현 가능      dependecy 추가         &amp;lt;dependency&amp;gt;         &amp;lt;groupId&amp;gt;org.springframework.kafka&am..."
     } ,
   
     {

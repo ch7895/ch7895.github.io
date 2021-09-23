@@ -1,6 +1,18 @@
 [
   
     {
+      "title"    : "kafka with springboot",
+      "title-lower"    : "kafka with springboot",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "kafka",
+      "tags"     : "",
+      "url"      : "/kafka/2021/09/23/kafa2.html",
+      "date"     : "2021-09-23 18:30:00 +0900",
+      "content"     : "스프링에서 카프카 연동하기(ing)      dependecy 추가         &amp;lt;dependency&amp;gt;         &amp;lt;groupId&amp;gt;org.springframework.kafka&amp;lt;/groupId&amp;gt;         &amp;lt;artifactId&amp;gt;spring-ka..."
+    } ,
+  
+    {
       "title"    : "brew install kafka",
       "title-lower"    : "brew install kafka",
       "sub-titile" : "",

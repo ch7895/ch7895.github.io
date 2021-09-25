@@ -1,6 +1,18 @@
 [
   
     {
+      "title"    : "kafka concept",
+      "title-lower"    : "kafka concept",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "kafka",
+      "tags"     : "",
+      "url"      : "/kafka/2021/09/24/kafa3.html",
+      "date"     : "2021-09-24 18:30:00 +0900",
+      "content"     : "Main Concepts and Terminology  Main Concepts and Terminology  공식 페이지에 있는 메인컨셉1. Producer/Consumer카프카에서 데이터를 읽고 쓰는 것은 이벤트 방식으로 발생한다.그리고 이 이벤트는 키,값,타임스탬프 그리고 메타데이터들이 있다.다음과 같은 이벤트가 있다.    Event key: ..."
+    } ,
+  
+    {
       "title"    : "kafka with springboot",
       "title-lower"    : "kafka with springboot",
       "sub-titile" : "",

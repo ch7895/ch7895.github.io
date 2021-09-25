@@ -1,0 +1,68 @@
+---
+layout: post
+title:  "kafka concept"
+date:   2021-09-24 15:00:00 +0530
+categories: kafka
+---
+
+Main Concepts and Terminology
+
+- [Main Concepts and Terminology
+](https://kafka.apache.org/intro#intro_concepts_and_terms?target=_blank
+)
+- 공식 페이지에 있는 메인컨셉
+
+
+#### 1. Producer/Consumer
+
+카프카에서 데이터를 읽고 쓰는 것은 이벤트 방식으로 발생한다.
+그리고 이 이벤트는 키,값,타임스탬프 그리고 메타데이터들이 있다. 
+
+다음과 같은 이벤트가 있다.
+```
+    Event key: "Alice"
+    Event value: "Made a payment of $200 to Bob"
+    Event timestamp: "Jun. 25, 2020 at 2:06 p.m."
+```
+    
+**Producer** 는 키값이 'Alice'인 이벤트를 카프카에 등록한다. 
+
+**Cosumer** 는 카프카에서 발생하는 이벤트를 구독한다. 
+
+**Producer** 는 **ConSumer**를 기다릴 필요가 없다. 
+
+<br/>
+
+#### 2. Topic
+
+producer가 등록한 하려는 이벤트는 카프카에서 **topic**에 영구적으로 저장된다.
+
+**topic**은 파일시스템의 폴더, 이벤트는 폴더안의 파일과 유사하다. 
+
+**topic**에는 producer/consumer가 복수개 존재할 수 있다. 
+
+그리고 카프에서는 이벤트가 다른 메세지큐와 달리 설정에 따라 처리이후 무조건 삭제 되지 않을 수도 있다. 
+
+**kafka**는 파티셔닝/리플리케이션을 활용해서 성능과 안전성을 보장한다. 
+
+공식페이지에 적힌 토픽의 대략적인 모습은 다음과 같다.
+![asdf](https://kafka.apache.org/images/streams-and-tables-p1_p4.png)
+
+`Figure: This example topic has four partitions P1–P4. Two different producer clients are publishing, independently from each other, new events to the topic by writing events over the network to the topic's partitions. Events with the same key (denoted by their color in the figure) are written to the same partition. Note that both producers can write to the same partition if appropriate.`
+
+주석이 써있긴하나 아직 경험이 부족해 와닿지는 않는다.
+
+토픽은 파티션을 가지고 있고, producer들은 파티션에 자유롭게 접근이 가능하다. 
+
+같은 키를 가진 이벤트는 같은 파티션에서 존재한다... 일단 이정도 
+
+좀 더 구체적인 실습이 필요하다.
+
+일단 여기까지.. 
+
+
+
+
+
+
+

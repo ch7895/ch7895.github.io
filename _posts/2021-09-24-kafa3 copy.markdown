@@ -1,0 +1,47 @@
+---
+layout: post
+title:  "install kafdrop"
+date:   2021-09-25 15:00:00 +0530
+categories: kafka
+---
+
+- kafdrop 설치  
+    - [https://github.com/obsidiandynamics/kafdrop](https://github.com/obsidiandynamics/kafdrop)
+
+
+- 이것저것 좀 찾아봤는데 이걸 젤 많이 쓰느듯하여 초이스 
+
+
+
+### 설치순서 
+
+
+1. 소스코드 다운
+
+    ```
+    git clone https://github.com/obsidiandynamics/kafdrop.git
+    ```
+
+2. jar 파일 생성
+    ```
+    ./mvnw clean package
+    ```
+
+3. 실행
+
+    ```
+    java -jar ./{jar생성위치/jar파일명}
+    ````
+    생각보다 간단하게 실행된다.
+    <br/>
+
+4. 접속
+
+    별다른 설정없이 실행이 되면 기본으로 9000 포트를 사용하고 localhost:9000 에서 아래페이지 접근이 가능하다
+
+    저번에 테스트 했을때 만들어놨던 토픽들이 조회된다.     
+    파티션도 없는 test, test1, topic1 .. 
+
+    ![kafdrop](/assets/img/kafdrop.png)
+
+

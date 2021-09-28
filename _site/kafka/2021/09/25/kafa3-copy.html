@@ -6,22 +6,22 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
-<title>brew install kafka</title>
+<title>install kafdrop</title>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>brew install kafka | Your awesome title</title>
+<title>install kafdrop | Your awesome title</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="brew install kafka" />
+<meta property="og:title" content="install kafdrop" />
 <meta name="author" content="GitHub User" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="카프카 설치하기 (with homebrew)" />
-<meta property="og:description" content="카프카 설치하기 (with homebrew)" />
+<meta name="description" content="kafdrop 설치 https://github.com/obsidiandynamics/kafdrop" />
+<meta property="og:description" content="kafdrop 설치 https://github.com/obsidiandynamics/kafdrop" />
 <meta property="og:site_name" content="Your awesome title" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-09-22T16:30:00+09:00" />
+<meta property="article:published_time" content="2021-09-25T18:30:00+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="brew install kafka" />
+<meta property="twitter:title" content="install kafdrop" />
 <script type="application/ld+json">
-{"url":"/kafka/2021/09/22/kafa1.html","author":{"@type":"Person","name":"GitHub User"},"headline":"brew install kafka","datePublished":"2021-09-22T16:30:00+09:00","dateModified":"2021-09-22T16:30:00+09:00","description":"카프카 설치하기 (with homebrew)","mainEntityOfPage":{"@type":"WebPage","@id":"/kafka/2021/09/22/kafa1.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"url":"/kafka/2021/09/25/kafa3-copy.html","author":{"@type":"Person","name":"GitHub User"},"headline":"install kafdrop","datePublished":"2021-09-25T18:30:00+09:00","dateModified":"2021-09-25T18:30:00+09:00","description":"kafdrop 설치 https://github.com/obsidiandynamics/kafdrop","mainEntityOfPage":{"@type":"WebPage","@id":"/kafka/2021/09/25/kafa3-copy.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -63,57 +63,51 @@
     </section>
     <section class="content">
       <div class="post-container">
-  <a class="post-link" href="/kafka/2021/09/22/kafa1.html">
-    <h2 class="post-title">brew install kafka</h2>
+  <a class="post-link" href="/kafka/2021/09/25/kafa3-copy.html">
+    <h2 class="post-title">install kafdrop</h2>
   </a>
   <div class="post-meta">
-    <div class="post-date"><i class="icon-calendar"></i>Sep 22, 2021</div><ul class="post-categories"><li>kafka</li></ul></div>
+    <div class="post-date"><i class="icon-calendar"></i>Sep 25, 2021</div><ul class="post-categories"><li>kafka</li></ul></div>
   <div class="post">
-    <p>카프카 설치하기 (with homebrew)</p>
+    <ul>
+  <li>kafdrop 설치
+    <ul>
+      <li><a href="https://github.com/obsidiandynamics/kafdrop">https://github.com/obsidiandynamics/kafdrop</a></li>
+    </ul>
+  </li>
+  <li>이것저것 좀 찾아봤는데 이걸 젤 많이 쓰느듯하여 초이스</li>
+</ul>
+
+<h3 id="설치순서">설치순서</h3>
 
 <ol>
   <li>
-    <p>kafka 설치</p>
+    <p>소스코드 다운</p>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     brew install kafka
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git clone https://github.com/obsidiandynamics/kafdrop.git
+</code></pre></div>    </div>
+  </li>
+  <li>jar 파일 생성
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ./mvnw clean package
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>zookeeper 설치</p>
+    <p>실행</p>
 
-    <ul>
-      <li>kafka를 관리하기 위한 목적</li>
-    </ul>
-
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     brew install zookeeper
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> java -jar ./{jar생성위치/jar파일명}
 </code></pre></div>    </div>
-  </li>
-  <li>실행
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     zkserver start
-     brew services start kafka
-</code></pre></div>    </div>
+    <p>생각보다 간단하게 실행된다.
+ <br /></p>
   </li>
   <li>
-    <p>topic 테스트</p>
+    <p>접속</p>
 
-    <p>4-1. 토픽생성</p>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test 
-</code></pre></div>    </div>
-    <p>4-2. 메시지발행</p>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     kafka-console-producer --broker-list localhost:9092 --topic test
-     &gt;hi
-     &gt;hello
-     &gt;test
-</code></pre></div>    </div>
-    <p>4-3. 메시지구독</p>
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     kafka-console-consumer --bootstrap-server localhost:9092 --topic test --from-beginning
+    <p>별다른 설정없이 실행이 되면 기본으로 9000 포트를 사용하고 localhost:9000 에서 아래페이지 접근이 가능하다</p>
 
-     hi
-     hello
-     test
-        
-     ^CProcessed a total of 3 messages
-</code></pre></div>    </div>
+    <p>저번에 테스트 했을때 만들어놨던 토픽들이 조회된다.   <br />
+ 파티션도 없는 test, test1, topic1 ..</p>
+
+    <p><img src="/assets/img/kafdrop.png" alt="kafdrop" /></p>
   </li>
 </ol>
 

@@ -5,7 +5,7 @@ date:   2021-10-11 15:00:00 +0530
 categories: go
 ---
 
-## funtion, variable
+funtion, variable
 
 ### function 
 
@@ -44,6 +44,7 @@ var (
 ```
 
 - 선언후기본값이 할당 (int=0/string=""/bool=false)
+
 - 대략적인 자료형, char가 안보인다. 
 ```go
 bool : true, false를 저장합니다

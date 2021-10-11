@@ -1,6 +1,18 @@
 [
   
     {
+      "title"    : "golang1",
+      "title-lower"    : "golang1",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "go",
+      "tags"     : "",
+      "url"      : "/go/2021/10/11/golang1.html",
+      "date"     : "2021-10-11 18:30:00 +0900",
+      "content"     : "funtion, variablefunctionfunc add1(x int, y int) int {    return x + y}  파라미터의 자료형의 뒷부분에 선언  함수 리턴값의 타입도 뒷부분에 선언  ’;’ 은 생략func add2(x, y int) int {    return x + y}  파라미터의 자료형이 동일할경우 한번만 명시variable..."
+    } ,
+  
+    {
       "title"    : "install kafdrop",
       "title-lower"    : "install kafdrop",
       "sub-titile" : "",

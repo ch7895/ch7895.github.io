@@ -1,0 +1,52 @@
+<h2 id="funtion-variable">funtion, variable</h2>
+
+<h3 id="function">function</h3>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">func</span> <span class="n">add1</span><span class="p">(</span><span class="n">x</span> <span class="kt">int</span><span class="p">,</span> <span class="n">y</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>파라미터의 자료형의 뒷부분에 선언</li>
+  <li>함수 리턴값의 타입도 뒷부분에 선언</li>
+  <li>’;’ 은 생략</li>
+</ul>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">func</span> <span class="n">add2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="kt">int</span><span class="p">)</span> <span class="kt">int</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>파라미터의 자료형이 동일할경우 한번만 명시</li>
+</ul>
+
+<h3 id="variable">variable</h3>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">num1</span> <span class="kt">int</span>
+<span class="k">var</span> <span class="n">num2</span><span class="p">,</span> <span class="n">num3</span> <span class="kt">int</span> 
+<span class="k">var</span> <span class="n">num4</span><span class="p">,</span> <span class="n">num5</span><span class="p">,</span> <span class="n">str1</span> <span class="o">=</span> <span class="m">4</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="s">"hello"</span>
+<span class="k">var</span> <span class="p">(</span>
+    <span class="n">i</span> <span class="kt">int</span> 
+    <span class="n">b</span> <span class="kt">bool</span> 
+    <span class="n">s</span> <span class="kt">string</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<ul>
+  <li>선언후기본값이 할당 (int=0/string=”“/bool=false)</li>
+  <li>대략적인 자료형, char가 안보인다.
+    <div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">bool</span> <span class="o">:</span> <span class="no">true</span><span class="p">,</span> <span class="n">false를</span> <span class="n">저장합니다</span>
+<span class="kt">string</span> <span class="o">:</span> <span class="n">문자</span> <span class="o">/</span> <span class="n">문자열을</span> <span class="n">저장합니다</span>
+<span class="kt">int</span> <span class="o">/</span> <span class="kt">int8</span> <span class="o">/</span> <span class="kt">int16</span> <span class="o">/</span> <span class="kt">int32</span> <span class="o">/</span> <span class="kt">int64</span> <span class="o">/</span> <span class="kt">uint</span> <span class="o">/</span> <span class="kt">uint8</span> <span class="o">/</span> <span class="kt">uint16</span> <span class="o">/</span> <span class="kt">uint32</span> <span class="o">/</span> <span class="kt">uint64</span> <span class="o">/</span> <span class="kt">uintptr</span>
+<span class="kt">byte</span> <span class="o">:</span> <span class="n">uint8과</span> <span class="n">같습니다</span>
+<span class="kt">rune</span> <span class="o">:</span> <span class="n">int32와</span> <span class="n">같습니다</span><span class="o">.</span> <span class="n">유니코드</span> <span class="n">포인트를</span> <span class="n">나타냅니다</span><span class="o">.</span>
+<span class="kt">float32</span> <span class="o">/</span> <span class="n">float</span> <span class="m">64</span>
+<span class="kt">complex64</span> <span class="o">/</span> <span class="kt">complex128</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+

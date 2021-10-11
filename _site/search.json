@@ -7,7 +7,7 @@
       "sub-titile-lower" : "",
       "categories" : "kafka",
       "tags"     : "",
-      "url"      : "/kafka/2021/09/25/kafa3-copy.html",
+      "url"      : "/kafka/2021/09/25/kafa4.html",
       "date"     : "2021-09-25 18:30:00 +0900",
       "content"     : "  kafdrop 설치          https://github.com/obsidiandynamics/kafdrop        이것저것 좀 찾아봤는데 이걸 젤 많이 쓰느듯하여 초이스설치순서      소스코드 다운     git clone https://github.com/obsidiandynamics/kafdrop.git        jar 파일 ..."
     } ,

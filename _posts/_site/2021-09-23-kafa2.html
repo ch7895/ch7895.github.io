@@ -1,0 +1,73 @@
+<p>스프링에서 카프카 연동하기</p>
+
+<ul>
+  <li>https://oingdaddy.tistory.com/308 실습</li>
+  <li>url 호출로 프로듀서/컨슈머 둘다 간단하게 구현 가능</li>
+</ul>
+
+<ol>
+  <li>
+    <p>dependecy 추가</p>
+
+    <div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     <span class="nt">&lt;dependency&gt;</span>
+         <span class="nt">&lt;groupId&gt;</span>org.springframework.kafka<span class="nt">&lt;/groupId&gt;</span>
+         <span class="nt">&lt;artifactId&gt;</span>spring-kafka<span class="nt">&lt;/artifactId&gt;</span>
+     <span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>    </div>
+  </li>
+  <li>컨트롤러 생성
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     <span class="nd">@Autowired</span>
+     <span class="kd">private</span> <span class="nc">KafkaSampleProducerService</span> <span class="n">kafkaSampleProducerService</span><span class="o">;</span>
+
+     <span class="nd">@GetMapping</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"/sendMessage"</span><span class="o">)</span>
+     <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sendMessage</span><span class="o">(</span><span class="nc">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+         <span class="n">kafkaSampleProducerService</span><span class="o">.</span><span class="na">sendMessage</span><span class="o">(</span><span class="n">message</span><span class="o">);</span>
+     <span class="o">}</span>
+
+</code></pre></div>    </div>
+  </li>
+  <li>producer (KafkaSampleProducerService)
+    <ul>
+      <li>KafkaTemplate
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nd">@Autowired</span>
+  <span class="kd">private</span> <span class="nc">KafkaTemplate</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">kafkaTemplate</span><span class="o">;</span>
+
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">sendMessage</span><span class="o">(</span><span class="nc">String</span> <span class="n">message</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"send message : "</span> <span class="o">+</span> <span class="n">message</span><span class="o">);</span>
+      <span class="k">this</span><span class="o">.</span><span class="na">kafkaTemplate</span><span class="o">.</span><span class="na">send</span><span class="o">(</span><span class="s">"topic1"</span><span class="o">,</span> <span class="n">message</span><span class="o">);</span>
+  <span class="o">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>consumer
+    <ul>
+      <li>
+        <p>@KafkaListener 어노테이션 사용</p>
+
+        <p>. ‘topics’ 의 값이 producer에서 발행한 key와 같아야함</p>
+        <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nd">@KafkaListener</span><span class="o">(</span><span class="n">topics</span> <span class="o">=</span> <span class="s">"topic1"</span><span class="o">,</span> <span class="n">groupId</span> <span class="o">=</span> <span class="s">"groupId1"</span><span class="o">)</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">consume</span><span class="o">(</span><span class="nc">String</span> <span class="n">message</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"receive message : "</span> <span class="o">+</span> <span class="n">message</span><span class="o">);</span>
+  <span class="o">}</span>
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>결과
+    <ul>
+      <li>url 호출
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  http://localhost:8080/sendMessage?message='asdfasdfasdf'
+</code></pre></div>        </div>
+      </li>
+      <li>결과
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  send message : asdfasdfasdf
+  ...
+  ...
+  receive message : asdfasdfasdf
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ol>
+

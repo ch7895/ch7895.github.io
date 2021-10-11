@@ -1,0 +1,48 @@
+<p>카프카 설치하기 (with homebrew)</p>
+
+<ol>
+  <li>
+    <p>kafka 설치</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     brew install kafka
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>zookeeper 설치</p>
+
+    <ul>
+      <li>kafka를 관리하기 위한 목적</li>
+    </ul>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     brew install zookeeper
+</code></pre></div>    </div>
+  </li>
+  <li>실행
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     zkserver start
+     brew services start kafka
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>topic 테스트</p>
+
+    <p>4-1. 토픽생성</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test 
+</code></pre></div>    </div>
+    <p>4-2. 메시지발행</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     kafka-console-producer --broker-list localhost:9092 --topic test
+     &gt;hi
+     &gt;hello
+     &gt;test
+</code></pre></div>    </div>
+    <p>4-3. 메시지구독</p>
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>     kafka-console-consumer --bootstrap-server localhost:9092 --topic test --from-beginning
+
+     hi
+     hello
+     test
+        
+     ^CProcessed a total of 3 messages
+</code></pre></div>    </div>
+  </li>
+</ol>
+

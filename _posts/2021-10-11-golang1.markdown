@@ -1,0 +1,61 @@
+---
+layout: post
+title:  "golang1"
+date:   2021-10-11 15:00:00 +0530
+categories: go
+---
+
+## funtion, variable
+
+### function 
+
+```go
+
+func add1(x int, y int) int {
+    return x + y
+}
+```
+
+- 파라미터의 자료형의 뒷부분에 선언
+- 함수 리턴값의 타입도 뒷부분에 선언
+- ';' 은 생략
+
+```go
+
+func add2(x, y int) int {
+    return x + y
+}
+```
+
+- 파라미터의 자료형이 동일할경우 한번만 명시
+
+
+### variable
+
+```go
+var num1 int
+var num2, num3 int 
+var num4, num5, str1 = 4,5,"hello"
+var (
+    i int 
+    b bool 
+    s string
+)
+```
+
+- 선언후기본값이 할당 (int=0/string=""/bool=false)
+- 대략적인 자료형, char가 안보인다. 
+```go
+bool : true, false를 저장합니다
+string : 문자 / 문자열을 저장합니다
+int / int8 / int16 / int32 / int64 / uint / uint8 / uint16 / uint32 / uint64 / uintptr
+byte : uint8과 같습니다
+rune : int32와 같습니다. 유니코드 포인트를 나타냅니다.
+float32 / float 64
+complex64 / complex128
+```
+
+
+
+
+

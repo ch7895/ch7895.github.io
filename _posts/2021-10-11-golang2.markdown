@@ -1,0 +1,46 @@
+---
+layout: post
+title:  "golang2"
+date:   2021-10-25 15:00:00 +0530
+categories: go
+---
+
+if, switch
+
+### if 
+
+```go
+if v := math.Pow(x, n); v < lim {
+    return v
+} else {
+    return 0;
+}
+```
+- if statement; 조건문 {} : 조건을 검사전 state구문 실행
+    - do-while의 if버전 인듯 싶다. 언젠간 유용하게 쓰일듯
+- else 구문이 if 닫는괄호와 같은 라인에 위치 하지 않을경우 syntax error
+- 조건이 괄호()로 감싸져 있지 않음
+
+
+
+### switch
+
+```go
+var grade string
+switch {
+case score > 90:
+    grade = "A"
+    fallthrough
+case score > 70:
+    grade = "B"
+    fallthrough
+case score > 50:
+    grade = "C"
+    fallthrough
+default:
+    grade = "F"
+}
+```
+
+- 굳이 *fallthrough* 를 사용하면 case에 걸리더라도 다음구문을 수행한다. 
+- 위결과는 score가 몇이든.. 'F', 이건 왜쓸까.. 

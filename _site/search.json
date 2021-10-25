@@ -1,6 +1,18 @@
 [
   
     {
+      "title"    : "golang2",
+      "title-lower"    : "golang2",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "go",
+      "tags"     : "",
+      "url"      : "/go/2021/10/25/golang2.html",
+      "date"     : "2021-10-25 18:30:00 +0900",
+      "content"     : "if, switchifif v := math.Pow(x, n); v &amp;lt; lim {    return v} else {    return 0;}  if statement; 조건문 {} : 조건을 검사전 state구문 실행          do-while의 if버전 인듯 싶다. 언젠간 유용하게 쓰일듯        else 구문이 if 닫는괄호..."
+    } ,
+  
+    {
       "title"    : "golang1",
       "title-lower"    : "golang1",
       "sub-titile" : "",

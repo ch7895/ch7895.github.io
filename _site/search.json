@@ -1,6 +1,30 @@
 [
   
     {
+      "title"    : "filebeat + elasticsearch 를 활용한 로그 수집",
+      "title-lower"    : "filebeat + elasticsearch 를 활용한 로그 수집",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "filebeat",
+      "tags"     : "",
+      "url"      : "/filebeat/2021/11/01/user-agent.html",
+      "date"     : "2021-11-01 18:30:00 +0900",
+      "content"     : "filebeat, elastisearch, kibanaelasticsearch      install elasticsearch     brew install elasticsearch brew services elasticsearch      kibana      install kibana     brew install kibana brew servic..."
+    } ,
+  
+    {
+      "title"    : "filebeat + elasticsearch 를 활용한 로그 수집",
+      "title-lower"    : "filebeat + elasticsearch 를 활용한 로그 수집",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "filebeat",
+      "tags"     : "",
+      "url"      : "/filebeat/2021/11/01/filebeat.html",
+      "date"     : "2021-11-01 18:30:00 +0900",
+      "content"     : "filebeat, elastisearch, kibanaelasticsearch      install elasticsearch     brew install elasticsearch brew services elasticsearch      kibana      install kibana     brew install kibana brew servic..."
+    } ,
+  
+    {
       "title"    : "golang2",
       "title-lower"    : "golang2",
       "sub-titile" : "",

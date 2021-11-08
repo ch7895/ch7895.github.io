@@ -6,9 +6,19 @@
                 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
         <url>
             <loc></loc>
-	    <lastmod>2021-10-25T22:36:57+09:00</lastmod>
+	    <lastmod>2021-11-08T23:17:52+09:00</lastmod>
             <priority>1.00</priority>
         </url><url>
+                <loc>/filebeat/2021/11/01/user-agent.html</loc>
+                <lastmod>2021-11-01T18:30:00+09:00</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.80</priority>
+            </url><url>
+                <loc>/filebeat/2021/11/01/filebeat.html</loc>
+                <lastmod>2021-11-01T18:30:00+09:00</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.80</priority>
+            </url><url>
                 <loc>/go/2021/10/25/golang2.html</loc>
                 <lastmod>2021-10-25T18:30:00+09:00</lastmod>
                 <changefreq>weekly</changefreq>

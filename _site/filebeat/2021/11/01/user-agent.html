@@ -6,22 +6,22 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <link href="https://fonts.googleapis.com/css?family=Merriweather:300|Raleway:400,700" rel="stylesheet">
 <link rel="stylesheet" href="/assets/css/style.css">
-<title>install kafdrop</title>
+<title>filebeat + elasticsearch 를 활용한 로그 수집</title>
 <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>install kafdrop | Your awesome title</title>
+<title>filebeat + elasticsearch 를 활용한 로그 수집 | Your awesome title</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="install kafdrop" />
+<meta property="og:title" content="filebeat + elasticsearch 를 활용한 로그 수집" />
 <meta name="author" content="GitHub User" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="kafdrop 설치 https://github.com/obsidiandynamics/kafdrop" />
-<meta property="og:description" content="kafdrop 설치 https://github.com/obsidiandynamics/kafdrop" />
+<meta name="description" content="filebeat, elastisearch, kibana" />
+<meta property="og:description" content="filebeat, elastisearch, kibana" />
 <meta property="og:site_name" content="Your awesome title" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-09-25T18:30:00+09:00" />
+<meta property="article:published_time" content="2021-11-01T18:30:00+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="install kafdrop" />
+<meta property="twitter:title" content="filebeat + elasticsearch 를 활용한 로그 수집" />
 <script type="application/ld+json">
-{"mainEntityOfPage":{"@type":"WebPage","@id":"/kafka/2021/09/25/kafa4.html"},"url":"/kafka/2021/09/25/kafa4.html","author":{"@type":"Person","name":"GitHub User"},"description":"kafdrop 설치 https://github.com/obsidiandynamics/kafdrop","dateModified":"2021-09-25T18:30:00+09:00","datePublished":"2021-09-25T18:30:00+09:00","headline":"install kafdrop","@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"mainEntityOfPage":{"@type":"WebPage","@id":"/filebeat/2021/11/01/user-agent.html"},"url":"/filebeat/2021/11/01/user-agent.html","author":{"@type":"Person","name":"GitHub User"},"description":"filebeat, elastisearch, kibana","dateModified":"2021-11-01T18:30:00+09:00","datePublished":"2021-11-01T18:30:00+09:00","headline":"filebeat + elasticsearch 를 활용한 로그 수집","@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -63,51 +63,57 @@
     </section>
     <section class="content">
       <div class="post-container">
-  <a class="post-link" href="/kafka/2021/09/25/kafa4.html">
-    <h2 class="post-title">install kafdrop</h2>
+  <a class="post-link" href="/filebeat/2021/11/01/user-agent.html">
+    <h2 class="post-title">filebeat + elasticsearch 를 활용한 로그 수집</h2>
   </a>
   <div class="post-meta">
-    <div class="post-date"><i class="icon-calendar"></i>Sep 25, 2021</div><ul class="post-categories"><li>kafka</li></ul></div>
+    <div class="post-date"><i class="icon-calendar"></i>Nov 1, 2021</div><ul class="post-categories"><li>filebeat</li></ul></div>
   <div class="post">
-    <ul>
-  <li>kafdrop 설치
-    <ul>
-      <li><a href="https://github.com/obsidiandynamics/kafdrop">https://github.com/obsidiandynamics/kafdrop</a></li>
-    </ul>
-  </li>
-  <li>이것저것 좀 찾아봤는데 이걸 젤 많이 쓰느듯하여 초이스</li>
-</ul>
+    <p>filebeat, elastisearch, kibana</p>
 
-<h3 id="설치순서">설치순서</h3>
+<h3 id="elasticsearch">elasticsearch</h3>
 
 <ol>
   <li>
-    <p>소스코드 다운</p>
+    <p>install elasticsearch</p>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> git clone https://github.com/obsidiandynamics/kafdrop.git
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> brew install elasticsearch
+ brew services elasticsearch
+
 </code></pre></div>    </div>
   </li>
-  <li>jar 파일 생성
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> ./mvnw clean package
+</ol>
+
+<h3 id="kibana">kibana</h3>
+
+<ol>
+  <li>
+    <p>install kibana</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> brew install kibana
+ brew services start kibana
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h3 id="filebeat">filebeat</h3>
+
+<ol>
+  <li>
+    <p>filebeat 설치</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> brew install filebeat
+ brew services start filebeat
 </code></pre></div>    </div>
   </li>
   <li>
-    <p>실행</p>
+    <p>filebeat 환경설정</p>
 
-    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code> java -jar ./{jar생성위치/jar파일명}
+    <p>vi /usr/local/etc/filebeat.yml</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
 </code></pre></div>    </div>
-    <p>생각보다 간단하게 실행된다.
- <br /></p>
-  </li>
-  <li>
-    <p>접속</p>
-
-    <p>별다른 설정없이 실행이 되면 기본으로 9000 포트를 사용하고 localhost:9000 에서 아래페이지 접근이 가능하다</p>
-
-    <p>저번에 테스트 했을때 만들어놨던 토픽들이 조회된다.   <br />
- 파티션도 없는 test, test1, topic1 ..</p>
-
-    <p><img src="/assets/img/kafdrop.png" alt="kafdrop" /></p>
   </li>
 </ol>
 

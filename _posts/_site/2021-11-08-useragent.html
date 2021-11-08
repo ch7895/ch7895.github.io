@@ -1,0 +1,86 @@
+<p>user-agent 값 축소</p>
+
+<p>대안은 user-agent client hints</p>
+
+<h3 id="why-is-the-user-agent-being-reduced">Why is the User-Agent being reduced?</h3>
+
+<ul>
+  <li>https://developer.chrome.com/blog/user-agent-reduction-origin-trial/</li>
+  <li>user-agent의 값들이 축소될 예정이다.</li>
+  <li>현재 크롬에서 관련 작업들을 진행중이고 2022년 2분기 확정예정이다.</li>
+  <li>나머지 chromium 기반이 아닌 브라우저들은 아직 구체적인 계획은 안 잡힌듯 하다.</li>
+</ul>
+
+<p>`
+User-Agent Reduction is an effort to reduce passive fingerprinting surfaces in the Chrome browser that was first announced in January 2020. By reducing the information in the UA string to just the browser’s brand and significant version, its desktop or mobile distinction, and the platform it’s running on, it becomes more difficult to identify individual users.
+`</p>
+
+<h3 id="변경되는-부분">변경되는 부분</h3>
+
+<ul>
+  <li>https://www.chromium.org/updates/ua-reduction</li>
+  <li>브라우저의 브랜드/버전 정보, 단말기 정보들이 다소 간단해지고, 마이너 버전의 숫자를 더이상 표시하지 않게 된다.</li>
+</ul>
+
+<p>Sample UA Strings: Final Reduced State
+||Desktop (user on Windows 8.1, for example)|
+|–|–|
+|Old UA |Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.1234.56 Safari/537.36|
+|Final Reduced UA|Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.0.0 Safari/537.36|</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Mobile (user on Samsung Galaxy, for example)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Old UA</td>
+      <td>Mozilla/5.0 (Linux; Android 9; SM-A205U) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.1234.56 Mobile Safari/537.36</td>
+    </tr>
+    <tr>
+      <td>Final Reduced UA</td>
+      <td>Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.0.0 Mobile Safari/537.36</td>
+    </tr>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Tablet (user on Samsung Galaxy, for example)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Old UA</td>
+      <td>Mozilla/5.0 (Linux; Android 9; SM-T810) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.1234.56 Safari/537.36</td>
+    </tr>
+    <tr>
+      <td>Final Reduced UA</td>
+      <td>Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.0.0 Safari/537.36</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="user-agent-client-hints">User-Agent Client Hints</h3>
+<ul>
+  <li>https://wicg.github.io/ua-client-hints/#http-ua-hints</li>
+  <li>user-agent 대신 브라우저/OS/모바일 여부등의 대한 값을 새로운 header 값을 통해 얻을 수 있다.</li>
+  <li>
+    <p>User-Agent Client Hints Header</p>
+
+    <p><img src="/assets/img/useragenthints.png" alt="useragenthints" /></p>
+  </li>
+  <li>모바일 여부값 확인
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="c1">// true : ?1 / false : ?0</span>
+  <span class="kd">final</span> <span class="nc">String</span> <span class="n">isMobile</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="na">getHeader</span><span class="o">(</span><span class="s">"sec-ua-ch-mobile"</span><span class="o">);</span>
+</code></pre></div>    </div>
+  </li>
+  <li>참고로 아직 w3c 표준은 아니고, <code class="language-plaintext highlighter-rouge">chrome/opera/samsaung</code> 브라우저에서만 현재 제공중이다. 
+(https://developer.mozilla.org/en-US/docs/Web/API/User-Agent_Client_Hints_API)</li>
+</ul>
+

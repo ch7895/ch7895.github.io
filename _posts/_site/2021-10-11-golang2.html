@@ -1,0 +1,42 @@
+<p>if, switch</p>
+
+<h3 id="if">if</h3>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">if</span> <span class="n">v</span> <span class="o">:=</span> <span class="n">math</span><span class="o">.</span><span class="n">Pow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">);</span> <span class="n">v</span> <span class="o">&lt;</span> <span class="n">lim</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">v</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<ul>
+  <li>if statement; 조건문 {} : 조건을 검사전 state구문 실행
+    <ul>
+      <li>do-while의 if버전 인듯 싶다. 언젠간 유용하게 쓰일듯</li>
+    </ul>
+  </li>
+  <li>else 구문이 if 닫는괄호와 같은 라인에 위치 하지 않을경우 syntax error</li>
+  <li>조건이 괄호()로 감싸져 있지 않음</li>
+</ul>
+
+<h3 id="switch">switch</h3>
+
+<div class="language-go highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="n">grade</span> <span class="kt">string</span>
+<span class="k">switch</span> <span class="p">{</span>
+<span class="k">case</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="m">90</span><span class="o">:</span>
+    <span class="n">grade</span> <span class="o">=</span> <span class="s">"A"</span>
+    <span class="k">fallthrough</span>
+<span class="k">case</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="m">70</span><span class="o">:</span>
+    <span class="n">grade</span> <span class="o">=</span> <span class="s">"B"</span>
+    <span class="k">fallthrough</span>
+<span class="k">case</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="m">50</span><span class="o">:</span>
+    <span class="n">grade</span> <span class="o">=</span> <span class="s">"C"</span>
+    <span class="k">fallthrough</span>
+<span class="k">default</span><span class="o">:</span>
+    <span class="n">grade</span> <span class="o">=</span> <span class="s">"F"</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<ul>
+  <li>굳이 <em>fallthrough</em> 를 사용하면 case에 걸리더라도 다음구문을 수행한다.</li>
+  <li>위결과는 score가 몇이든.. ‘F’, 이건 왜쓸까..</li>
+</ul>

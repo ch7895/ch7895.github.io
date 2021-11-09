@@ -2,6 +2,8 @@
 
 <p>대안은 user-agent client hints</p>
 
+<p><br /></p>
+
 <h3 id="why-is-the-user-agent-being-reduced">Why is the User-Agent being reduced?</h3>
 
 <ul>
@@ -11,9 +13,11 @@
   <li>나머지 chromium 기반이 아닌 브라우저들은 아직 구체적인 계획은 안 잡힌듯 하다.</li>
 </ul>
 
-<p>`
-User-Agent Reduction is an effort to reduce passive fingerprinting surfaces in the Chrome browser that was first announced in January 2020. By reducing the information in the UA string to just the browser’s brand and significant version, its desktop or mobile distinction, and the platform it’s running on, it becomes more difficult to identify individual users.
-`</p>
+<p><br /></p>
+
+<p><code class="language-plaintext highlighter-rouge">User-Agent Reduction is an effort to reduce passive fingerprinting surfaces in the Chrome browser that was first announced in January 2020. By reducing the information in the UA string to just the browser's brand and significant version, its desktop or mobile distinction, and the platform it's running on, it becomes more difficult to identify individual users.</code></p>
+
+<p><br /></p>
 
 <h3 id="변경되는-부분">변경되는 부분</h3>
 
@@ -22,11 +26,26 @@ User-Agent Reduction is an effort to reduce passive fingerprinting surfaces in t
   <li>브라우저의 브랜드/버전 정보, 단말기 정보들이 다소 간단해지고, 마이너 버전의 숫자를 더이상 표시하지 않게 된다.</li>
 </ul>
 
-<p>Sample UA Strings: Final Reduced State
-||Desktop (user on Windows 8.1, for example)|
-|–|–|
-|Old UA |Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.1234.56 Safari/537.36|
-|Final Reduced UA|Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.0.0 Safari/537.36|</p>
+<p>Sample UA Strings: Final Reduced State</p>
+
+<table>
+  <thead>
+    <tr>
+      <th> </th>
+      <th>Desktop (user on Windows 8.1, for example)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Old UA</td>
+      <td>Mozilla/5.0 (Windows NT 6.3; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.1234.56 Safari/537.36</td>
+    </tr>
+    <tr>
+      <td>Final Reduced UA</td>
+      <td>Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.0.0 Safari/537.36</td>
+    </tr>
+  </tbody>
+</table>
 
 <table>
   <thead>
@@ -65,6 +84,8 @@ User-Agent Reduction is an effort to reduce passive fingerprinting surfaces in t
     </tr>
   </tbody>
 </table>
+
+<p><br /></p>
 
 <h3 id="user-agent-client-hints">User-Agent Client Hints</h3>
 <ul>

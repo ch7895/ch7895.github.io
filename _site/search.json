@@ -1,15 +1,27 @@
 [
   
     {
-      "title"    : "filebeat + elasticsearch 를 활용한 로그 수집",
-      "title-lower"    : "filebeat + elasticsearch 를 활용한 로그 수집",
+      "title"    : "Cloud Native Architecture",
+      "title-lower"    : "cloud native architecture",
       "sub-titile" : "",
       "sub-titile-lower" : "",
-      "categories" : "filebeat",
+      "categories" : "www",
       "tags"     : "",
-      "url"      : "/filebeat/2021/11/01/user-agent.html",
-      "date"     : "2021-11-01 18:30:00 +0900",
-      "content"     : "filebeat, elastisearch, kibanaelasticsearch      install elasticsearch     brew install elasticsearch brew services elasticsearch      kibana      install kibana     brew install kibana brew servic..."
+      "url"      : "/www/cloud-native-architecture/",
+      "date"     : "2021-11-14 18:30:00 +0900",
+      "content"     : "cloud native architecture  ci/cd, devops12factor12factor  base code          형상관리            depencency isolation    configuration          설정정보는 외부에서 변경이 가능해야 한다.            Linkable backing servi..."
+    } ,
+  
+    {
+      "title"    : "user-agent reduction",
+      "title-lower"    : "user-agent reduction",
+      "sub-titile" : "",
+      "sub-titile-lower" : "",
+      "categories" : "www",
+      "tags"     : "",
+      "url"      : "/www/useragent/",
+      "date"     : "2021-11-08 18:30:00 +0900",
+      "content"     : "user-agent 값 축소대안은 user-agent client hintsWhy is the User-Agent being reduced?  https://developer.chrome.com/blog/user-agent-reduction-origin-trial/  user-agent의 값들이 축소될 예정이다.  현재 크롬에서 관련 작업들을 진행중이..."
     } ,
   
     {
@@ -19,7 +31,7 @@
       "sub-titile-lower" : "",
       "categories" : "filebeat",
       "tags"     : "",
-      "url"      : "/filebeat/2021/11/01/filebeat.html",
+      "url"      : "/filebeat/filebeat/",
       "date"     : "2021-11-01 18:30:00 +0900",
       "content"     : "filebeat, elastisearch, kibanaelasticsearch      install elasticsearch     brew install elasticsearch brew services elasticsearch      kibana      install kibana     brew install kibana brew servic..."
     } ,
@@ -31,7 +43,7 @@
       "sub-titile-lower" : "",
       "categories" : "go",
       "tags"     : "",
-      "url"      : "/go/2021/10/25/golang2.html",
+      "url"      : "/go/golang2/",
       "date"     : "2021-10-25 18:30:00 +0900",
       "content"     : "if, switchifif v := math.Pow(x, n); v &amp;lt; lim {    return v} else {    return 0;}  if statement; 조건문 {} : 조건을 검사전 state구문 실행          do-while의 if버전 인듯 싶다. 언젠간 유용하게 쓰일듯        else 구문이 if 닫는괄호..."
     } ,
@@ -43,7 +55,7 @@
       "sub-titile-lower" : "",
       "categories" : "go",
       "tags"     : "",
-      "url"      : "/go/2021/10/11/golang1.html",
+      "url"      : "/go/golang1/",
       "date"     : "2021-10-11 18:30:00 +0900",
       "content"     : "funtion, variablefunctionfunc add1(x int, y int) int {    return x + y}  파라미터의 자료형의 뒷부분에 선언  함수 리턴값의 타입도 뒷부분에 선언  ’;’ 은 생략func add2(x, y int) int {    return x + y}  파라미터의 자료형이 동일할경우 한번만 명시variable..."
     } ,
@@ -55,7 +67,7 @@
       "sub-titile-lower" : "",
       "categories" : "kafka",
       "tags"     : "",
-      "url"      : "/kafka/2021/09/25/kafa4.html",
+      "url"      : "/kafka/kafa4/",
       "date"     : "2021-09-25 18:30:00 +0900",
       "content"     : "  kafdrop 설치          https://github.com/obsidiandynamics/kafdrop        이것저것 좀 찾아봤는데 이걸 젤 많이 쓰느듯하여 초이스설치순서      소스코드 다운     git clone https://github.com/obsidiandynamics/kafdrop.git        jar 파일 ..."
     } ,
@@ -67,7 +79,7 @@
       "sub-titile-lower" : "",
       "categories" : "kafka",
       "tags"     : "",
-      "url"      : "/kafka/2021/09/24/kafa3.html",
+      "url"      : "/kafka/kafa3/",
       "date"     : "2021-09-24 18:30:00 +0900",
       "content"     : "Main Concepts and Terminology  Main Concepts and Terminology  공식 페이지에 있는 메인컨셉1. Producer/Consumer카프카에서 데이터를 읽고 쓰는 것은 이벤트 방식으로 발생한다.그리고 이 이벤트는 키,값,타임스탬프 그리고 메타데이터들이 있다.다음과 같은 이벤트가 있다.    Event key: ..."
     } ,
@@ -79,7 +91,7 @@
       "sub-titile-lower" : "",
       "categories" : "kafka",
       "tags"     : "",
-      "url"      : "/kafka/2021/09/23/kafa2.html",
+      "url"      : "/kafka/kafa2/",
       "date"     : "2021-09-23 18:30:00 +0900",
       "content"     : "스프링에서 카프카 연동하기  https://oingdaddy.tistory.com/308 실습  url 호출로 프로듀서/컨슈머 둘다 간단하게 구현 가능      dependecy 추가         &amp;lt;dependency&amp;gt;         &amp;lt;groupId&amp;gt;org.springframework.kafka&am..."
     } ,
@@ -91,7 +103,7 @@
       "sub-titile-lower" : "",
       "categories" : "kafka",
       "tags"     : "",
-      "url"      : "/kafka/2021/09/22/kafa1.html",
+      "url"      : "/kafka/kafa1/",
       "date"     : "2021-09-22 16:30:00 +0900",
       "content"     : "카프카 설치하기 (with homebrew)      kafka 설치         brew install kafka            zookeeper 설치          kafka를 관리하기 위한 목적             brew install zookeeper        실행         zkserver start     brew ser..."
     } ,
@@ -103,7 +115,7 @@
       "sub-titile-lower" : "",
       "categories" : "java",
       "tags"     : "",
-      "url"      : "/java/2021/05/10/IntegerCache.html",
+      "url"      : "/java/IntegerCache/",
       "date"     : "2021-05-10 19:30:00 +0900",
       "content"     : "앞서 스택에는 실제 값이 존재하는 힙의 주소를 저장한다고 했습니다.  그리고 “==”는 변수가 선언던 곳의 값을 비교하는것 뿐이구요그냥 단지 데이터 타입에 따라 누구는 실제 값을 저장하고 다른 누구는 주소를 저장한다는것과굳이 한가지 더 이유는 아마도 primitive type은 공간의 사이즈가 고정적인 반면에클래스들은 그렇지 않은게 이유이지 않을까 합..."
     } ,
@@ -115,7 +127,7 @@
       "sub-titile-lower" : "",
       "categories" : "java",
       "tags"     : "",
-      "url"      : "/java/2021/05/09/equals,==-copy.html",
+      "url"      : "/java/equals,==-copy/",
       "date"     : "2021-05-09 00:05:00 +0900",
       "content"     : "변수값을 비교할때 종종 ‘==’, equals 사용하지만 둘은 사실상 사상만 비슷할뿐 혼동할 필요는 없습니다.int n1 = 1;int n2 = 1;System.out.println(n1==n2) // true우선 primitive type인 int의 2개의 변수에 동일한 value를 할당하고 비교했을 시 결과는true  입니다.그리고 n1.equal..."
     } ,
@@ -127,7 +139,7 @@
       "sub-titile-lower" : "",
       "categories" : "javajwt",
       "tags"     : "",
-      "url"      : "/java/jwt/2021/04/21/jwt2.html",
+      "url"      : "/java/jwt/jwt2/",
       "date"     : "2021-04-21 00:05:00 +0900",
       "content"     : "signature부분은 토큰의 변조 방지를 담당한다.토큰내용이야 base64로 인코딩되어있어 얼마든지 디코딩이 가능하나변조는 불가능해야 한다.jwt파싱 (step1-1, SignatureAlgorithm)우선 header영역의 alg값을 읽어온다. 이값이 null 이면 예외를 뱉는다. SignatureAlorithm 클래스는 enum 타입고 각종 ha..."
     } ,
@@ -139,7 +151,7 @@
       "sub-titile-lower" : "",
       "categories" : "javajwt",
       "tags"     : "",
-      "url"      : "/java/jwt/2021/04/19/jwt1.html",
+      "url"      : "/java/jwt/jwt1/",
       "date"     : "2021-04-19 04:31:31 +0900",
       "content"     : "jwt에 대해서 조금 궁금해져서 사용방법을 조금 더 고민하다가 파싱함수를 뜯어보기로 했다. jwt는 DefaultJws라는 클래스에 의해 만들어지고 쓰여진다. 상단영역을 보게되면 멤버 변수로 header, body, signature 로 구성되어있다. body가 payload 영역으로 추측된다.signature 영역은 string, body는 제네릭,..."
     } ,
@@ -151,7 +163,7 @@
       "sub-titile-lower" : "",
       "categories" : "JavascriptNodeJS",
       "tags"     : "",
-      "url"      : "/javascript/nodejs/2019/03/24/welcome-to-jekyll.html",
+      "url"      : "/javascript/nodejs/welcome-to-jekyll/",
       "date"     : "2019-03-24 00:33:36 +0900",
       "content"     : "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ..."
     } 

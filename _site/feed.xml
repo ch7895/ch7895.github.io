@@ -1,4 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-11-15T01:06:31+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Site Title</title><subtitle>An amazing website.</subtitle><author><name>Your Name</name></author><entry><title type="html">Cloud Native Architecture</title><link href="http://localhost:4000/www/cloud-native-architecture/" rel="alternate" type="text/html" title="Cloud Native Architecture" /><published>2021-11-14T18:30:00+09:00</published><updated>2021-11-14T18:30:00+09:00</updated><id>http://localhost:4000/www/cloud-native-architecture</id><content type="html" xml:base="http://localhost:4000/www/cloud-native-architecture/">&lt;p&gt;cloud native architecture&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-05T22:28:53+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Site Title</title><subtitle>An amazing website.</subtitle><author><name>Your Name</name></author><entry><title type="html">Cloud Native Architecture</title><link href="http://localhost:4000/www/cloud-native-architecture-copy/" rel="alternate" type="text/html" title="Cloud Native Architecture" /><published>2021-11-14T18:30:00+09:00</published><updated>2021-11-14T18:30:00+09:00</updated><id>http://localhost:4000/www/cloud-native-architecture%20copy</id><content type="html" xml:base="http://localhost:4000/www/cloud-native-architecture-copy/">&lt;p&gt;cloud native architecture&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;ci/cd, devops&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;12factor&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;12factor&quot;&gt;12factor&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;base code
+    &lt;ul&gt;
+      &lt;li&gt;형상관리&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;depencency isolation&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;configuration
+    &lt;ul&gt;
+      &lt;li&gt;설정정보는 외부에서 변경이 가능해야 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Linkable backing services&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;stages-of-creation&quot;&gt;stages of creation&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="www" /><summary type="html">cloud native architecture</summary></entry><entry><title type="html">Cloud Native Architecture</title><link href="http://localhost:4000/www/docker0/" rel="alternate" type="text/html" title="Cloud Native Architecture" /><published>2021-11-14T18:30:00+09:00</published><updated>2021-11-14T18:30:00+09:00</updated><id>http://localhost:4000/www/docker0</id><content type="html" xml:base="http://localhost:4000/www/docker0/">&lt;p&gt;cloud native architecture&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;ci/cd, devops&lt;/li&gt;
@@ -181,7 +213,7 @@
 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="filebeat" /><summary type="html">filebeat, elastisearch, kibana</summary></entry><entry><title type="html">golang2</title><link href="http://localhost:4000/go/golang2/" rel="alternate" type="text/html" title="golang2" /><published>2021-10-25T18:30:00+09:00</published><updated>2021-10-25T18:30:00+09:00</updated><id>http://localhost:4000/go/golang2</id><content type="html" xml:base="http://localhost:4000/go/golang2/">&lt;p&gt;if, switch&lt;/p&gt;
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="filebeat" /><summary type="html">filebeat, elastisearch, kibana</summary></entry><entry><title type="html">golang if,switch</title><link href="http://localhost:4000/go/golang2/" rel="alternate" type="text/html" title="golang if,switch" /><published>2021-10-25T18:30:00+09:00</published><updated>2021-10-25T18:30:00+09:00</updated><id>http://localhost:4000/go/golang2</id><content type="html" xml:base="http://localhost:4000/go/golang2/">&lt;p&gt;if, switch&lt;/p&gt;
 
 &lt;h3 id=&quot;if&quot;&gt;if&lt;/h3&gt;
 
@@ -222,7 +254,7 @@
 &lt;ul&gt;
   &lt;li&gt;굳이 &lt;em&gt;fallthrough&lt;/em&gt; 를 사용하면 case에 걸리더라도 다음구문을 수행한다.&lt;/li&gt;
   &lt;li&gt;위결과는 score가 몇이든.. ‘F’, 이건 왜쓸까..&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>Your Name</name></author><category term="go" /><summary type="html">if, switch</summary></entry><entry><title type="html">golang1</title><link href="http://localhost:4000/go/golang1/" rel="alternate" type="text/html" title="golang1" /><published>2021-10-11T18:30:00+09:00</published><updated>2021-10-11T18:30:00+09:00</updated><id>http://localhost:4000/go/golang1</id><content type="html" xml:base="http://localhost:4000/go/golang1/">&lt;p&gt;funtion, variable&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>Your Name</name></author><category term="go" /><summary type="html">if, switch</summary></entry><entry><title type="html">golang function, variable</title><link href="http://localhost:4000/go/golang1/" rel="alternate" type="text/html" title="golang function, variable" /><published>2021-10-11T18:30:00+09:00</published><updated>2021-10-11T18:30:00+09:00</updated><id>http://localhost:4000/go/golang1</id><content type="html" xml:base="http://localhost:4000/go/golang1/">&lt;p&gt;funtion, variable&lt;/p&gt;
 
 &lt;h3 id=&quot;function&quot;&gt;function&lt;/h3&gt;
 
@@ -484,117 +516,4 @@
      ^CProcessed a total of 3 messages
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="kafka" /><summary type="html">카프카 설치하기 (with homebrew)</summary></entry><entry><title type="html">IntegerCache</title><link href="http://localhost:4000/java/IntegerCache/" rel="alternate" type="text/html" title="IntegerCache" /><published>2021-05-10T19:30:00+09:00</published><updated>2021-05-10T19:30:00+09:00</updated><id>http://localhost:4000/java/IntegerCache</id><content type="html" xml:base="http://localhost:4000/java/IntegerCache/">&lt;p&gt;앞서 스택에는 실제 값이 존재하는 힙의 주소를 저장한다고 했습니다.  그리고 “==”는 변수가 선언던 곳의 값을 비교하는것 뿐이구요&lt;/p&gt;
-
-&lt;p&gt;그냥 단지 데이터 타입에 따라 누구는 실제 값을 저장하고 다른 누구는 주소를 저장한다는것과&lt;/p&gt;
-
-&lt;p&gt;굳이 한가지 더 이유는 아마도 primitive type은 공간의 사이즈가 고정적인 반면에
-클래스들은 그렇지 않은게 이유이지 않을까 합니다.&lt;/p&gt;
-
-&lt;p&gt;값을 1을 가지는 Integer 변수 2개를 만들어서 비교해 보겠습니다.&lt;/p&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;B&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;A&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;B&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//true&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;true 가 나옵니다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Integer A,B가 같은 주소를 가르키나?&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;싶은 생각이 들어 
-이번에는 1을 바로 할당하지 않고 인스턴스 답게 ‘new’ 를 사용해보겠습니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;E&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;F&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;E&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;F&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//false&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;어랏..
-false가 나옵니다.&lt;/p&gt;
-
-&lt;p&gt;따라서 A와 B에는 int 1 이 할당이 된것처럼 보여지나 
-실상 내부적으로 컴파일러가 한 일은 다음과 같습니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;A&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// --&amp;gt; Integer A = Integer.valueOf(1); &lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;그렇다면 여기서 Integer.valueOf를 한번 볼 필요가 있을듯 합니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;valueOf&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IntegerCache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;low&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IntegerCache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;high&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IntegerCache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(-&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;IntegerCache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;low&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)];&lt;/span&gt;
-    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;그냥 값을 가져오는게 아니라 특정 범위 내에서는 integerCache라는 배열에서 값을 가져 오고,&lt;/p&gt;
-
-&lt;p&gt;범위를 벗어나는 경우 새로운 객체를 생성하여 반환 해줍니다.&lt;/p&gt;
-
-&lt;p&gt;즉 정리 하면&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;A와 B는 값을 직접 할당함을로써 valueOf에 의해 캐시되어있는 동일한 객체를 부여 받음&lt;/li&gt;
-  &lt;li&gt;E와 D는 각각 new 함수에 의해 별도로 생성
-&lt;br /&gt;
-&lt;br /&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;이번엔 1이 아닌 128을 가진 Integer 변수 2개를 실행하면 조금 다른 결과가 나옵니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;C&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;128&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;D&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;128&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;nc&quot;&gt;System&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;out&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;println&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;C&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;D&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;//false&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;이번엔 false 입니다.&lt;br /&gt;
-A,B와 차이점은 할당된 값이 1이냐 128이냐의 차이입니다.&lt;/p&gt;
-
-&lt;p&gt;그렇다면 valueOf에 나오는 IntegerCache 가 뭔지 조금더 볼 필요가 있을듯 합니다.&lt;/p&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IntegerCache&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;low&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;128&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;high&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[];&lt;/span&gt;
-
-        &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;c1&quot;&gt;// high value may be configured by property&lt;/span&gt;
-            &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;127&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;nc&quot;&gt;String&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;integerCacheHighPropValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;sun&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;misc&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;VM&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;getSavedProperty&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;java.lang.Integer.IntegerCache.high&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;integerCacheHighPropValue&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!=&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;k&quot;&gt;try&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-                    &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;parseInt&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;integerCacheHighPropValue&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-                    &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;max&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;127&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-                    &lt;span class=&quot;c1&quot;&gt;// Maximum array size is Integer.MAX_VALUE&lt;/span&gt;
-                    &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Math&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;min&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;MAX_VALUE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;(-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;low&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;NumberFormatException&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nfe&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-                    &lt;span class=&quot;c1&quot;&gt;// If the property cannot be parsed into an int, ignore it.&lt;/span&gt;
-                &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-            &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-            &lt;span class=&quot;n&quot;&gt;high&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;h&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-
-            &lt;span class=&quot;n&quot;&gt;cache&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;high&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;low&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;];&lt;/span&gt;
-            &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;j&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;low&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++)&lt;/span&gt;
-                &lt;span class=&quot;n&quot;&gt;cache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Integer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;j&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;++);&lt;/span&gt;
-
-            &lt;span class=&quot;c1&quot;&gt;// range [-128, 127] must be interned (JLS7 5.1.7)&lt;/span&gt;
-            &lt;span class=&quot;k&quot;&gt;assert&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;IntegerCache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;high&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;127&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-        &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-        &lt;span class=&quot;kd&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;IntegerCache&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{}&lt;/span&gt;
-    &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;p&gt;결과적으로 Integer는 jvm이 실행되면 -128부터 127까지의 값을 Integer cache[] 라는 static final로 선언되어있는 배열에 저장을 합니다.&lt;/p&gt;
-
-&lt;p&gt;Integer에는 IntegerCache가 있지만, 
-위에서 언급한 wrapper class는 모두 integerCache 같은 것들이 존재합니다.&lt;/p&gt;
-
-&lt;p&gt;이런것들이 생긴 이유는 수년간의 경험을 통해 특정 wrapper class에 담기는 값이 어느정도 비슷해보이자&lt;/p&gt;
-
-&lt;p&gt;이를 미리 메모리에 올려놓고 불필요한 메모리 사용을 줄이기 위해 한것이 아닐까 합니다.&lt;/p&gt;</content><author><name>Your Name</name></author><category term="java" /><summary type="html">앞서 스택에는 실제 값이 존재하는 힙의 주소를 저장한다고 했습니다. 그리고 “==”는 변수가 선언던 곳의 값을 비교하는것 뿐이구요</summary></entry></feed>
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="kafka" /><summary type="html">카프카 설치하기 (with homebrew)</summary></entry></feed>

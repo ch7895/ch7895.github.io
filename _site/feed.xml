@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-05T22:28:53+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Site Title</title><subtitle>An amazing website.</subtitle><author><name>Your Name</name></author><entry><title type="html">Cloud Native Architecture</title><link href="http://localhost:4000/www/cloud-native-architecture-copy/" rel="alternate" type="text/html" title="Cloud Native Architecture" /><published>2021-11-14T18:30:00+09:00</published><updated>2021-11-14T18:30:00+09:00</updated><id>http://localhost:4000/www/cloud-native-architecture%20copy</id><content type="html" xml:base="http://localhost:4000/www/cloud-native-architecture-copy/">&lt;p&gt;cloud native architecture&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-12-06T12:54:32+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Site Title</title><subtitle>An amazing website.</subtitle><author><name>Your Name</name></author><entry><title type="html">Cloud Native Architecture</title><link href="http://localhost:4000/www/cloud-native-architecture-copy/" rel="alternate" type="text/html" title="Cloud Native Architecture" /><published>2021-11-14T18:30:00+09:00</published><updated>2021-11-14T18:30:00+09:00</updated><id>http://localhost:4000/www/cloud-native-architecture%20copy</id><content type="html" xml:base="http://localhost:4000/www/cloud-native-architecture-copy/">&lt;p&gt;cloud native architecture&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;ci/cd, devops&lt;/li&gt;
@@ -30,39 +30,40 @@
   &lt;li&gt;
     &lt;h2 id=&quot;stages-of-creation&quot;&gt;stages of creation&lt;/h2&gt;
   &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="www" /><summary type="html">cloud native architecture</summary></entry><entry><title type="html">Cloud Native Architecture</title><link href="http://localhost:4000/www/docker0/" rel="alternate" type="text/html" title="Cloud Native Architecture" /><published>2021-11-14T18:30:00+09:00</published><updated>2021-11-14T18:30:00+09:00</updated><id>http://localhost:4000/www/docker0</id><content type="html" xml:base="http://localhost:4000/www/docker0/">&lt;p&gt;cloud native architecture&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;ci/cd, devops&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;12factor&lt;/p&gt;
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="www" /><summary type="html">cloud native architecture</summary></entry><entry><title type="html">docker install</title><link href="http://localhost:4000/www/docker0/" rel="alternate" type="text/html" title="docker install" /><published>2021-11-14T18:30:00+09:00</published><updated>2021-11-14T18:30:00+09:00</updated><id>http://localhost:4000/www/docker0</id><content type="html" xml:base="http://localhost:4000/www/docker0/">&lt;p&gt;install, lifecyle&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;12factor&quot;&gt;12factor&lt;/h3&gt;
+&lt;h3 id=&quot;docker-install&quot;&gt;docker install&lt;/h3&gt;
+
+&lt;p&gt;설치는 공홈에서 받아서 설치하면된다.&lt;/p&gt;
 
 &lt;ol&gt;
-  &lt;li&gt;base code
+  &lt;li&gt;docker homepage
     &lt;ul&gt;
-      &lt;li&gt;형상관리&lt;/li&gt;
+      &lt;li&gt;https://docs.docker.com/get-docker/&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;depencency isolation&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;configuration
+  &lt;li&gt;확인
     &lt;ul&gt;
-      &lt;li&gt;설정정보는 외부에서 변경이 가능해야 한다.&lt;/li&gt;
+      &lt;li&gt;
+        &lt;p&gt;터미널에서 docker 실행&lt;/p&gt;
+
+        &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  &amp;gt; docker
+
+      Usage:  docker [OPTIONS] COMMAND
+
+      A self-sufficient runtime for containers
+
+      Options:
+          --config string      Location of client config files (default&quot;/Users/chkyu/.docker&quot;)
+          ...
+          ...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;        &lt;/div&gt;
+      &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Linkable backing services&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;h2 id=&quot;stages-of-creation&quot;&gt;stages of creation&lt;/h2&gt;
-  &lt;/li&gt;
-&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="www" /><summary type="html">cloud native architecture</summary></entry><entry><title type="html">user-agent reduction</title><link href="http://localhost:4000/www/useragent/" rel="alternate" type="text/html" title="user-agent reduction" /><published>2021-11-08T18:30:00+09:00</published><updated>2021-11-08T18:30:00+09:00</updated><id>http://localhost:4000/www/useragent</id><content type="html" xml:base="http://localhost:4000/www/useragent/">&lt;p&gt;user-agent 값 축소&lt;/p&gt;
+&lt;/ol&gt;</content><author><name>Your Name</name></author><category term="www" /><summary type="html">install, lifecyle</summary></entry><entry><title type="html">user-agent reduction</title><link href="http://localhost:4000/www/useragent/" rel="alternate" type="text/html" title="user-agent reduction" /><published>2021-11-08T18:30:00+09:00</published><updated>2021-11-08T18:30:00+09:00</updated><id>http://localhost:4000/www/useragent</id><content type="html" xml:base="http://localhost:4000/www/useragent/">&lt;p&gt;user-agent 값 축소&lt;/p&gt;
 
 &lt;p&gt;대안은 user-agent client hints&lt;/p&gt;
 

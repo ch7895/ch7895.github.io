@@ -1,31 +1,35 @@
 ---
 layout: post
-title:  "Cloud Native Architecture"
+title:  "docker install"
 date:   2021-11-14 15:00:00 +0530
 categories: www
 ---
 
-cloud native architecture
-
-- ci/cd, devops
-
-12factor 
+install, lifecyle 
 
 
 <br/>
 
-### 12factor
+### docker install 
 
-1. base code 
-    - 형상관리
+설치는 공홈에서 받아서 설치하면된다. 
 
-2. depencency isolation
+1. docker homepage 
+    - https://docs.docker.com/get-docker/
 
-3. configuration 
-    - 설정정보는 외부에서 변경이 가능해야 한다. 
+2. 확인
+    - 터미널에서 docker 실행 
+    
+        ```
+        > docker
 
-4. Linkable backing services
+            Usage:  docker [OPTIONS] COMMAND
 
-5. stages of creation 
-- 
+            A self-sufficient runtime for containers
+
+            Options:
+                --config string      Location of client config files (default"/Users/chkyu/.docker")
+                ...
+                ...
+        ```
 

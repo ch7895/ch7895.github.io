@@ -1,0 +1,40 @@
+---
+layout: post
+title:  "docker lifecyle"
+date:   2021-12-07 15:00:00 +0530
+categories: docker
+---
+
+lifecyle
+
+<br/>
+
+### docker lifecycle
+- 이미지 다운받아 실행하기, 몇가지 명령어만 실행하면 간단하게 이미지를 올릴 수 있다. 
+
+1. search 
+    - 이미 공유되어있는 이미지들 중에 내 서버에서 사용할 것을 찾아본다. 
+    - 누구나 쉽게 올리고 공유할 수 있다. 
+    - 나중에 내가 올린것을 다른곳에서 받아서 실행할때 도 사용할 수 있을듯 하다. 
+    ![dockersearh](/assets/img/docker_search.png)
+
+2. pull  
+    - docker image를 다운 받는다. 
+    ![dockerpull](/assets/img/docker_pull.png)
+
+3. image 
+    - 현재 다운로드된 image를 확인
+    ![dockerimages](/assets/img/docker_images.png)
+
+4. run 
+    - image를 실행한다. 
+    ![dockerrun](/assets/img/docker_run.png)
+    - 확인
+    ![localhost](/assets/img/localhost.png)
+
+
+### Docker architecture
+https://docs.docker.com/get-started/overview/#docker-architecture
+![dockerArchitecture](https://docs.docker.com/engine/images/architecture.svg)
+
+

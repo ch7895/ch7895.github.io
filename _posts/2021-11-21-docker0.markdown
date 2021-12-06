@@ -5,7 +5,7 @@ date:   2021-11-14 15:00:00 +0530
 categories: www
 ---
 
-install, lifecyle 
+install
 
 
 <br/>
@@ -19,7 +19,7 @@ install, lifecyle
 
 2. 확인
     - 터미널에서 docker 실행 
-    
+
         ```
         > docker
 
